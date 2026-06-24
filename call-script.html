@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Capture System Sales Call Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --ink: #172033;
+      --muted: #5b667a;
+      --line: #dfe5ef;
+      --accent: #111827;
+      --accent-soft: #eef2ff;
+      --success: #ecfdf5;
+      --warning: #fff7ed;
+      --radius: 5px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 18px 60px;
+    }
+
+    header {
+      background: var(--accent);
+      color: #fff;
+      padding: 34px 28px;
+      border-radius: var(--radius);
+      margin-bottom: 18px;
+      box-shadow: 0 10px 30px rgba(17,24,39,0.14);
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(30px, 5vw, 54px);
+      line-height: 1.05;
+      letter-spacing: -1px;
+    }
+
+    .subtitle {
+      margin: 0;
+      max-width: 760px;
+      color: #d7deea;
+      font-size: 18px;
+    }
+
+    .topbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 18px 0;
+    }
+
+    .pill {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 12px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .toc {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 18px;
+    }
+
+    .toc h2 { margin-top: 0; }
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 8px 18px;
+      margin: 0;
+      padding-left: 18px;
+    }
+    .toc a { color: var(--ink); text-decoration: none; font-weight: 600; }
+    .toc a:hover { text-decoration: underline; }
+
+    section {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin: 16px 0;
+      box-shadow: 0 4px 18px rgba(17,24,39,0.04);
+    }
+
+    h2 {
+      font-size: 25px;
+      margin: 0 0 16px;
+      letter-spacing: -0.3px;
+      line-height: 1.2;
+    }
+
+    h3 {
+      margin: 22px 0 8px;
+      font-size: 17px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      color: var(--muted);
+    }
+
+    p { margin: 10px 0; }
+    ul, ol { padding-left: 22px; }
+    li { margin: 6px 0; }
+
+    blockquote {
+      margin: 14px 0;
+      padding: 14px 16px;
+      border-left: 4px solid var(--accent);
+      background: var(--accent-soft);
+      border-radius: var(--radius);
+      font-weight: 600;
+    }
+
+    .example {
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      margin: 12px 0;
+    }
+
+    .example strong, .note strong { display: block; margin-bottom: 6px; }
+
+    .note {
+      background: var(--warning);
+      border: 1px solid #fed7aa;
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      margin: 12px 0;
+    }
+
+    .green {
+      background: var(--success);
+      border-color: #bbf7d0;
+    }
+
+    .price-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin: 12px 0;
+      background: #fbfdff;
+    }
+
+    .price-card h3 {
+      color: var(--ink);
+      text-transform: none;
+      letter-spacing: 0;
+      margin-top: 0;
+      font-size: 20px;
+    }
+
+    .price {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin: 6px 0 10px;
+    }
+
+    .summary-list li { margin-bottom: 8px; }
+
+    .sticky-back {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.22);
+    }
+
+    @media print {
+      body { background: #fff; }
+      .page { max-width: none; padding: 0; }
+      header, section, .toc { box-shadow: none; break-inside: avoid; }
+      .sticky-back { display: none; }
+      a { color: inherit; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page" id="top">
+    <header>
+      <h1>Client Capture System Sales Call Guide</h1>
+      <p class="subtitle">A diagnostic call framework for uncovering enquiry leakage, quantifying lost opportunity, prescribing the right system, and closing the deposit professionally.</p>
+    </header>
+
+    <div class="topbar">
+      <span class="pill">Not a word-for-word script</span>
+      <span class="pill">Use as a call flow</span>
+      <span class="pill">Diagnose before prescribing</span>
+      <span class="pill">Take deposit on the call</span>
+    </div>
+
+    <nav class="toc">
+      <h2>Call Flow</h2>
+      <ol class="toc-grid">
+        <li><a href="#purpose">Purpose</a></li>
+        <li><a href="#opening">Opening</a></li>
+        <li><a href="#credibility">Credibility</a></li>
+        <li><a href="#situation">Current Situation</a></li>
+        <li><a href="#enquiry-flow">Enquiry Flow</a></li>
+        <li><a href="#quoting">Quoting Process</a></li>
+        <li><a href="#followup">Follow-Up</a></li>
+        <li><a href="#leakage">Leakage Points</a></li>
+        <li><a href="#cost">Cost Of Leakage</a></li>
+        <li><a href="#future-state">Future State</a></li>
+        <li><a href="#prescribe">Prescribe</a></li>
+        <li><a href="#price">Present Investment</a></li>
+        <li><a href="#close">Close Deposit</a></li>
+        <li><a href="#objections">Objections</a></li>
+        <li><a href="#guarantee">Guarantee</a></li>
+        <li><a href="#decision-guide">Decision Guide</a></li>
+        <li><a href="#summary">Summary</a></li>
+      </ol>
+    </nav>
+
+    <section id="purpose">
+      <h2>Purpose Of The Call</h2>
+      <p>The purpose of the call is not to “sell a website” or “pitch a CRM.”</p>
+      <p>The purpose is to diagnose where the business is currently losing enquiries, quotes, follow-ups, reviews, repeat work, or missed opportunities — then prescribe the correct system if there is a genuine fit.</p>
+      <blockquote>The prospect should leave the call feeling: “I can see where money is slipping through the cracks, and this system would help fix that.”</blockquote>
+    </section>
+
+    <section id="opening">
+      <h2>1. Opening The Call</h2>
+      <h3>Objective</h3>
+      <p>Make the call feel relaxed, normal, and useful. Avoid sounding like a salesperson. Set the tone that this is a business conversation, not a pitch.</p>
+      <div class="example"><strong>Example</strong>
+        <p>“Hi mate, good to speak properly. The main reason I wanted to jump on is just to understand how things are working for you at the moment — where enquiries come from, what happens after someone gets in touch, and whether there are any obvious gaps where jobs might be slipping through.”</p>
+        <p>“Then, if I think I can help, I’ll show you what I’d recommend. If not, I’ll just tell you straight.”</p>
+      </div>
+      <div class="note green"><strong>Key Principle</strong>Position yourself as a diagnostician, not a salesperson.</div>
+    </section>
+
+    <section id="credibility">
+      <h2>2. Quick Credibility / Context</h2>
+      <h3>Objective</h3>
+      <p>Briefly explain who you are and why you understand the problem. Do not spend too long talking about yourself.</p>
+      <div class="example"><strong>Example</strong>
+        <p>“I work with local businesses on the enquiry and follow-up side of things — websites, CRM systems, quote follow-up, missed enquiry recovery, review systems, that sort of thing.”</p>
+        <p>“The reason I got into this is because I saw first-hand how good businesses can work incredibly hard but still have no real system behind them. My dad had a shop for years, worked like mad, but there was no proper online system, no follow-up, no way of capturing lost customers. That stuck with me.”</p>
+        <p>“So now what I look for is where good businesses are already getting interest, but money is leaking out because there isn’t a proper process behind it.”</p>
+      </div>
+      <div class="note"><strong>Key Principle</strong>Keep this short. Your story is there to create trust, not dominate the call.</div>
+    </section>
+
+    <section id="situation">
+      <h2>3. Current Business Situation</h2>
+      <h3>Objective</h3>
+      <p>Understand where they are now and what they want next.</p>
+      <h3>Questions To Ask</h3>
+      <ul>
+        <li>“Where are you at with the business at the moment — steady, busy, up and down?”</li>
+        <li>“Are you looking to grow, stay where you are, charge more, get off the tools a bit, or just make things more consistent?”</li>
+        <li>“What would make the next 6–12 months better for you?”</li>
+        <li>“Are you trying to bring more people in, take on bigger jobs, or just stop the quiet patches?”</li>
+      </ul>
+      <h3>What You Are Listening For</h3>
+      <ul>
+        <li>Wants more consistent work</li><li>Wants better quality enquiries</li><li>Wants higher-value jobs</li><li>Wants to get off the tools</li><li>Wants to stop chasing people</li><li>Wants to grow but feels disorganised</li><li>Busy but still losing opportunities</li><li>Not desperate, but open to improvement</li>
+      </ul>
+      <div class="example"><strong>Example Response</strong><p>“Got you. So it’s not necessarily that you need to be flooded with random leads. It’s more that you want the right enquiries coming in and a better way to turn those enquiries into booked jobs.”</p></div>
+    </section>
+
+    <section id="enquiry-flow">
+      <h2>4. Current Enquiry Flow</h2>
+      <h3>Objective</h3>
+      <p>Find out exactly what happens when someone makes an enquiry.</p>
+      <h3>Questions To Ask</h3>
+      <ul>
+        <li>“Where do most of your enquiries come from at the moment?”</li>
+        <li>“Facebook, Google, recommendations, Checkatrade, MyBuilder, word of mouth — or a bit of everything?”</li>
+        <li>“When someone gets in touch, what normally happens?”</li>
+        <li>“Do they message you, call you, fill in a form, WhatsApp you?”</li>
+        <li>“Who handles those enquiries?”</li>
+        <li>“How quickly do you usually get back to people?”</li>
+        <li>“Do you have everything in one place, or is it scattered across Facebook, WhatsApp, texts, calls and emails?”</li>
+      </ul>
+      <h3>What You Are Listening For</h3>
+      <ul>
+        <li>Enquiries scattered everywhere</li><li>No central system</li><li>Missed messages</li><li>Slow response</li><li>Relies on memory</li><li>Facebook messages get buried</li><li>No proper tracking</li><li>No idea how many enquiries come in</li>
+      </ul>
+      <div class="example"><strong>Example Response</strong><p>“Right, so at the moment there isn’t really one central place where every enquiry lands. It’s more a case of messages and calls coming in from different places, and you trying to keep on top of it manually.”</p></div>
+    </section>
+
+    <section id="quoting">
+      <h2>5. Quoting Process</h2>
+      <h3>Objective</h3>
+      <p>Understand how quotes are handled and where people disappear.</p>
+      <h3>Questions To Ask</h3>
+      <ul>
+        <li>“What happens after someone asks for a quote?”</li>
+        <li>“Do you usually go out and see the job first?”</li>
+        <li>“How quickly do quotes get sent?”</li>
+        <li>“Do you send quotes by WhatsApp, email, text, PDF, or just verbally?”</li>
+        <li>“Roughly how many quotes do you send in a normal month?”</li>
+        <li>“Out of those, how many turn into jobs?”</li>
+        <li>“What normally happens to the ones who don’t go ahead?”</li>
+      </ul>
+      <h3>What You Are Listening For</h3>
+      <ul>
+        <li>Quotes sent with no follow-up</li><li>People disappear</li><li>Prospect says “too expensive”</li><li>No tracking after quote</li><li>No structured quote-chasing</li><li>Discounts offered too quickly</li><li>No deposit mechanism</li><li>No next-step process</li>
+      </ul>
+      <div class="example"><strong>Example Response</strong><p>“So the real issue might not be getting people interested. You’re already getting people interested. The gap is what happens after they’ve asked for a quote or received a quote.”</p></div>
+    </section>
+
+    <section id="followup">
+      <h2>6. Follow-Up Process</h2>
+      <h3>Objective</h3>
+      <p>Identify whether they are leaving money on the table by not following up.</p>
+      <h3>Questions To Ask</h3>
+      <ul>
+        <li>“Do you follow up after sending a quote?”</li>
+        <li>“How many times?”</li>
+        <li>“Is that written down anywhere, or just when you remember?”</li>
+        <li>“What do you normally say when you follow up?”</li>
+        <li>“How long do you leave it?”</li>
+        <li>“Do you ever have people come back weeks or months later?”</li>
+        <li>“Do you ever look back and think, ‘I probably should have chased that one’?”</li>
+      </ul>
+      <h3>What You Are Listening For</h3>
+      <ul>
+        <li>“Sometimes”</li><li>“When I remember”</li><li>“I don’t like chasing”</li><li>“I’m too busy”</li><li>“They usually go quiet”</li><li>“I just assume they went cheaper”</li><li>“People come back later”</li>
+      </ul>
+      <div class="example"><strong>Example Response</strong><p>“That’s really common. Most trades businesses don’t lose jobs because the customer definitely said no. A lot of the time, the customer just drifts, gets distracted, speaks to someone else, or forgets — and because there’s no follow-up system, that job just disappears.”</p></div>
+    </section>
+
+    <section id="leakage">
+      <h2>7. Identify Leakage Points</h2>
+      <h3>Objective</h3>
+      <p>Summarise where money is leaking from the business.</p>
+      <h3>Common Leakage Points</h3>
+      <ul>
+        <li>Missed calls</li><li>Missed Facebook messages</li><li>Slow replies</li><li>No central CRM</li><li>No quote follow-up</li><li>No deposit/payment link</li><li>No review request process</li><li>No reactivation of old customers</li><li>No reminder sequence</li><li>No way to see who is hot, warm, or cold</li><li>No reporting</li>
+      </ul>
+      <div class="example"><strong>Example Summary</strong>
+        <p>“From what you’ve told me, I don’t think your main issue is that people don’t want what you do. You’re already getting enquiries.”</p>
+        <p>“The issue is more that once people enquire, there isn’t really a proper machine behind it. Some people call, some message, some get quotes, some disappear, and unless you remember to chase them manually, they’re just gone.”</p>
+        <p>“That’s where money usually leaks out.”</p>
+      </div>
+    </section>
+
+    <section id="cost">
+      <h2>8. Quantify The Cost</h2>
+      <h3>Objective</h3>
+      <p>Turn the leakage into a financial number.</p>
+      <h3>Questions To Ask</h3>
+      <ul>
+        <li>“What’s an average job worth to you?”</li>
+        <li>“How many quotes do you think go cold each month?”</li>
+        <li>“If you recovered just one or two of those per month, what would that be worth?”</li>
+        <li>“Did you look at the calculator?”</li>
+        <li>“Roughly what number did it show?”</li>
+      </ul>
+      <div class="example"><strong>Example</strong><p>“So if an average job is worth £1,000 and you recovered just one extra job a week, that’s around £52,000 over a year.”</p><p>“Even if we were wrong by half, it’s still serious money.”</p></div>
+      <div class="note"><strong>Key Principle</strong>Do not overclaim. Say “recover some of it,” not “we’ll get all of it back.”</div>
+    </section>
+
+    <section id="future-state">
+      <h2>9. Future State</h2>
+      <h3>Objective</h3>
+      <p>Get them emotionally connected to the outcome.</p>
+      <h3>Questions To Ask</h3>
+      <ul>
+        <li>“If you recovered even part of that lost money, what would that allow you to do?”</li>
+        <li>“Would you take on more staff?”</li>
+        <li>“Upgrade equipment?”</li>
+        <li>“Take more time off?”</li>
+        <li>“Stop worrying about the quiet weeks?”</li>
+        <li>“Pick and choose better jobs?”</li>
+        <li>“Would it help you get off the tools a bit?”</li>
+      </ul>
+      <div class="example"><strong>Example Response</strong><p>“That’s the bit I care about. The system itself is just the mechanism. The real outcome is you having more control — fewer jobs slipping away, less manual chasing, and more consistency in the business.”</p></div>
+    </section>
+
+    <section id="prescribe">
+      <h2>10. Ask Permission & Prescribe</h2>
+      <h3>Ask Permission</h3>
+      <div class="example"><strong>Examples</strong>
+        <p>“Based on what you’ve told me, would you like me to show you what I’d recommend?”</p>
+        <p>“Do you want my honest view on what I’d put in place if this was my business?”</p>
+        <p>“Would you be opposed to me showing you the best next step from here?”</p>
+      </div>
+      <h3>Prescribe The Client Capture System</h3>
+      <div class="example"><strong>Example</strong>
+        <p>“Based on what you’ve told me, I think the Client Capture System is the right fit.”</p>
+        <p>“I don’t think you need anything overly complicated at this stage. What you need is a proper front-end website so people can check you out, and then a system behind it that captures enquiries, stores them properly, follows up after quotes, and makes sure fewer people slip through the net.”</p>
+        <p>“The website is the shopfront. It’s what people see. But the Client Capture System is the engine underneath it.”</p>
+      </div>
+      <h3>Ferrari Analogy</h3>
+      <blockquote>“The website is a bit like having the Ferrari on the driveway. It looks good, it builds trust, and it gives people confidence. But the bit that makes the money is the engine inside — the system that captures the enquiry, follows up, reminds people, and helps turn interest into booked work.”</blockquote>
+      <h3>Explain What It Does</h3>
+      <p>When someone enquires, instead of that enquiry just sitting in Facebook, WhatsApp or your phone, it goes into one central system.</p>
+      <p>You can see who enquired, where they came from, whether they’ve had a quote, whether they need chasing, whether they’ve booked, and whether they’ve gone cold.</p>
+      <p>After a quote goes out, the system can follow up automatically, so you’re not relying on memory. It means fewer people disappear just because nobody chased them.</p>
+      <h3>Confirm Fit Before Price</h3>
+      <ul>
+        <li>“Does that sound like it would solve the issue we’ve been talking about?”</li>
+        <li>“Can you see how that would help stop some of these jobs slipping through?”</li>
+        <li>“Does that feel like the kind of thing you need in place?”</li>
+      </ul>
+    </section>
+
+    <section id="price">
+      <h2>11. Present The Investment</h2>
+      <div class="price-card">
+        <h3>Standard Client Capture System</h3>
+        <div class="price">£3,000 total + £50/month</div>
+        <p>“The Client Capture System is £3,000 in total.”</p>
+        <p>“The way we do it is simple. It’s £500 to get started today. That gets the project booked in and allows us to start building the website and the system.”</p>
+        <p>“Then it’s £1,250 when the website goes live.”</p>
+        <p>“And the final £1,250 is due when the full system is handed over and we’ve trained you on how to use it.”</p>
+        <p>“After that, it’s just £50 a month to keep everything hosted, maintained and running properly.”</p>
+      </div>
+
+      <div class="price-card">
+        <h3>Growth System Option</h3>
+        <div class="price">£5,000 setup + £100/month</div>
+        <p>Recommend this if they need review automation, reactivation campaigns, quote chasing, missed call follow-up, SMS/email campaigns, Messenger automation, reporting dashboard, or more aggressive growth.</p>
+        <p>“That includes everything in the Client Capture System, but also adds things like review automation, missed-call follow-up, quote chasing, reactivation campaigns, and more of the growth-focused follow-up.”</p>
+      </div>
+
+      <div class="price-card">
+        <h3>Enterprise / Multi-Team Option</h3>
+        <div class="price">From £7,000 setup + £197/month</div>
+        <p>Recommend this if they have multiple teams, multiple vans, multiple calendars, multiple locations, office staff, complex booking processes, or a larger operation.</p>
+        <p>“That’s built more around team management, multiple calendars, routing enquiries properly, and giving you visibility over what’s happening across the business.”</p>
+      </div>
+    </section>
+
+    <section id="close">
+      <h2>12. Close For The Deposit</h2>
+      <h3>Objective</h3>
+      <p>Take payment while still on the call.</p>
+      <div class="example"><strong>Example</strong><p>“Perfect. If you’re happy to go ahead, the next step is simply the £500 deposit.”</p><p>“I’ll send the payment link over now while we’re on the phone, and once that’s done I’ll talk you through exactly what happens next.”</p></div>
+      <div class="note green"><strong>Key Principle</strong>Do not say “I’ll send you the link later.” Send it while on the call. Keep the momentum.</div>
+
+      <h3>After Payment</h3>
+      <div class="example"><strong>Example</strong><p>“Brilliant, that’s come through.”</p><p>“So from here, I’ll get the project set up, send over the onboarding questions, and we’ll start pulling together everything we need for the website and system.”</p><p>“The first milestone is getting the website live. Once that’s ready, the next payment is due, then we build out the full Client Capture System behind it.”</p></div>
+
+      <h3>If They Don’t Pay On The Call</h3>
+      <p>Do not say: “Are you going to avoid my calls if you don’t pay?”</p>
+      <div class="example"><strong>Better Example</strong><p>“No problem. When do you realistically think you’ll be able to get that sorted?”</p><p>If they say “later”: “Later today, or are you thinking tomorrow?”</p><p>Once they give a time: “Perfect. I’ll pencil that in. If I haven’t seen it by then, I’ll give you a quick call just to make sure nothing’s got in the way.”</p></div>
+      <div class="note"><strong>Key Principle</strong>Get a specific commitment. Not vague intent.</div>
+    </section>
+
+    <section id="objections">
+      <h2>13. Common Objections</h2>
+      <h3>“I need to think about it.”</h3>
+      <p>“Of course. What part do you need to think through — whether you need it, whether it would work, or the money side?”</p>
+
+      <h3>“It’s a lot of money.”</h3>
+      <p>“Completely understand. And if it was just a website, I’d agree with you.”</p>
+      <p>“But based on what we’ve talked about, the real question is whether this helps recover some of the jobs already slipping through.”</p>
+      <p>“If recovering even one or two extra jobs covers the cost, then it becomes less of a cost and more of a system to stop money leaking out.”</p>
+
+      <h3>“I’m already busy.”</h3>
+      <p>“That’s actually a good position to be in.”</p>
+      <p>“This isn’t just about getting more random enquiries. It’s about making sure the enquiries you already get are captured properly, followed up properly, and not wasted.”</p>
+      <p>“Sometimes busy businesses leak more money because they’re too busy to chase everything.”</p>
+
+      <h3>“Most of my work is word of mouth.”</h3>
+      <p>“That’s a good sign. It means people already trust your work.”</p>
+      <p>“But even with word of mouth, people still check you out, compare you, forget to reply, or delay decisions.”</p>
+      <p>“So the system isn’t replacing word of mouth. It’s supporting it.”</p>
+
+      <h3>“I don’t like chasing people.”</h3>
+      <p>“That’s exactly why this helps.”</p>
+      <p>“The system does the polite follow-up automatically, so it doesn’t feel like you personally chasing.”</p>
+      <p>“It just keeps the conversation alive with people who already showed interest.”</p>
+
+      <h3>“I don’t need a website.”</h3>
+      <p>“That may be true.”</p>
+      <p>“The website itself isn’t always the main thing. It’s more the trust point and the place where enquiries can be captured properly.”</p>
+      <p>“The bigger thing is the system behind it — what happens after someone shows interest.”</p>
+    </section>
+
+
+    <section id="guarantee">
+      <h2>14. The 12-Month Buy-Back Guarantee</h2>
+      <h3>When To Use This</h3>
+      <p>Do not lead with the guarantee. Use it as a safety net after the value has been established, the investment has been explained, and they are hesitating because of risk.</p>
+
+      <h3>Objective</h3>
+      <p>Reduce the perceived risk without making unrealistic promises or taking responsibility for things outside your control.</p>
+
+      <div class="example"><strong>Example</strong>
+        <p>“Before you make any decision, there’s one thing worth mentioning.”</p>
+        <p>“I appreciate investing £3,000, £5,000 or more into your business isn’t something you do lightly.”</p>
+        <p>“That’s why we stand behind what we build.”</p>
+        <p>“If we put the system in place, get everything set up correctly, train you on how to use it, and you genuinely implement it as agreed, then after 12 months, if you can honestly say it hasn’t improved the way your business captures, follows up with, and manages enquiries, we’ll buy the system back from you and refund your investment.”</p>
+        <p>“In other words, we’re putting the risk on ourselves to deliver what we’ve promised.”</p>
+        <p>“We’re not interested in building websites and disappearing. We’re interested in building systems that actually help businesses operate better.”</p>
+      </div>
+
+      <h3>Important Positioning</h3>
+      <ul>
+        <li>Do not call it “zero risk” too early. Say you have removed as much risk as possible.</li>
+        <li>Make it clear they need to actually use the system as agreed.</li>
+        <li>The guarantee is not a replacement for value. It is a final confidence-builder.</li>
+        <li>The guarantee should feel like you standing behind your work, not begging for the sale.</li>
+      </ul>
+
+      <div class="note green"><strong>Key Principle</strong>The strongest close is still: “I want this because it solves my problem.” The guarantee simply removes the final bit of hesitation.</div>
+    </section>
+
+    <section id="decision-guide">
+      <h2>15. Package Decision Guide</h2>
+      <h3>Recommend Website Only If:</h3>
+      <ul><li>They are tiny</li><li>No real budget</li><li>No clear leakage problem</li><li>Just need basic online presence</li><li>Not ready for a system</li></ul>
+
+      <h3>Recommend Client Capture System If:</h3>
+      <ul><li>They get enquiries but lose track</li><li>They quote but don’t follow up</li><li>They want more consistency</li><li>They are one team or simple operation</li><li>They need a proper website plus CRM</li><li>They want fewer jobs slipping away</li></ul>
+
+      <h3>Recommend Growth System If:</h3>
+      <ul><li>They want to grow seriously</li><li>They have old customers to reactivate</li><li>They need reviews</li><li>They miss calls</li><li>They send lots of quotes</li><li>They want quote chasing</li><li>They want more automation</li><li>They understand the value of follow-up</li></ul>
+
+      <h3>Recommend Enterprise If:</h3>
+      <ul><li>Multiple teams</li><li>Multiple calendars</li><li>Multiple vans</li><li>Office staff</li><li>Different services</li><li>More complex operation</li><li>Needs reporting and team visibility</li></ul>
+    </section>
+
+    <section id="summary">
+      <h2>16. Core Mindset & Simple Summary</h2>
+      <h3>The Core Mindset</h3>
+      <ul>
+        <li>Do not sell features.</li>
+        <li>Sell the recovery of lost opportunity.</li>
+        <li>Do not talk like a web designer.</li>
+        <li>Talk like a business doctor.</li>
+        <li>Do not pitch too early.</li>
+        <li>Diagnose first.</li>
+        <li>Do not assume the package.</li>
+        <li>Prescribe based on what they tell you.</li>
+        <li>Do not chase vague yeses.</li>
+        <li>Get clear next steps.</li>
+        <li>Do not send the payment link after the call.</li>
+        <li>Send it while momentum is highest.</li>
+      </ul>
+
+      <h3>Simple Call Flow Summary</h3>
+      <ol class="summary-list">
+        <li>Open the call.</li>
+        <li>Explain why you’re speaking.</li>
+        <li>Give brief credibility/context.</li>
+        <li>Ask where the business is now.</li>
+        <li>Ask where they want it to go.</li>
+        <li>Map their enquiry flow.</li>
+        <li>Map their quoting process.</li>
+        <li>Map their follow-up process.</li>
+        <li>Identify leakage.</li>
+        <li>Quantify the cost.</li>
+        <li>Ask what recovered revenue would mean.</li>
+        <li>Ask permission to recommend.</li>
+        <li>Prescribe the right package.</li>
+        <li>Confirm the solution makes sense.</li>
+        <li>Present the investment.</li>
+        <li>Take the deposit on the call.</li>
+        <li>Explain next steps.</li>
+        <li>If no payment, get a specific payment time and follow-up commitment.</li>
+      </ol>
+
+      <blockquote>“We’re not just building you a website — we’re putting a system behind your business so fewer enquiries, quotes and potential jobs slip through the cracks.”</blockquote>
+    </section>
+  </div>
+  <a href="#top" class="sticky-back">Back to top</a>
+</body>
+</html>
