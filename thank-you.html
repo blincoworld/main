@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You | Website Launch Request Received</title>
+  <meta name="description" content="Thank you. Your website launch request has been received and the next steps are now underway." />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <style>
+    :root {
+      --dark: #111827;
+      --black: #050505;
+      --muted: #6b7280;
+      --light: #f8fafc;
+      --cream: #fff8ed;
+      --gold: #f59e0b;
+      --gold-dark: #d97706;
+      --green: #16a34a;
+      --border: #e5e7eb;
+      --radius: 5px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--dark);
+      background: #fff;
+      line-height: 1.6;
+    }
+    .top-strip {
+      background: var(--black);
+      color: #fff;
+      font-weight: 800;
+      font-size: .92rem;
+      padding: 10px 0;
+      text-align: center;
+    }
+    .hero {
+      background:
+        radial-gradient(circle at top left, rgba(245,158,11,.24), transparent 32%),
+        linear-gradient(135deg, #111827 0%, #050505 70%);
+      color: #fff;
+      padding: 86px 0 66px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero:after {
+      content: '';
+      position: absolute;
+      right: -120px;
+      top: -120px;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      border: 45px solid rgba(255,255,255,.06);
+    }
+    .eyebrow {
+      display: inline-block;
+      background: rgba(245,158,11,.16);
+      border: 1px solid rgba(245,158,11,.5);
+      color: #fbbf24;
+      padding: 8px 13px;
+      border-radius: var(--radius);
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: .78rem;
+      letter-spacing: .9px;
+      margin-bottom: 18px;
+    }
+    h1, h2, h3, h4 { letter-spacing: -.04em; }
+    h1 {
+      font-weight: 900;
+      font-size: clamp(2.35rem, 5vw, 4.8rem);
+      line-height: .98;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+    }
+    h1 span { color: #fbbf24; }
+    .lead-copy {
+      font-size: clamp(1.08rem, 2vw, 1.35rem);
+      color: #e5e7eb;
+      font-weight: 500;
+      max-width: 760px;
+      margin-bottom: 28px;
+    }
+    .hero-card {
+      background: #fff;
+      color: var(--dark);
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: 0 24px 60px rgba(0,0,0,.28);
+      position: relative;
+      z-index: 2;
+      height: 100%;
+    }
+    .success-icon {
+      width: 72px;
+      height: 72px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(22,163,74,.12);
+      color: var(--green);
+      border-radius: 50%;
+      font-size: 2.25rem;
+      margin-bottom: 20px;
+    }
+    .price-box {
+      background: var(--cream);
+      border: 1px solid #fed7aa;
+      border-left: 5px solid var(--gold);
+      padding: 18px;
+      border-radius: var(--radius);
+      margin: 22px 0;
+      font-weight: 700;
+    }
+    .btn-main {
+      background: var(--gold);
+      color: #111827;
+      border: none;
+      border-radius: var(--radius);
+      font-weight: 900;
+      padding: 15px 22px;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 8px 0 var(--gold-dark);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .btn-main:hover {
+      color: #111827;
+      transform: translateY(2px);
+      box-shadow: 0 6px 0 var(--gold-dark);
+    }
+    .section { padding: 70px 0; }
+    .section-light { background: var(--light); }
+    .section-title {
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      margin-bottom: 16px;
+    }
+    .section-subtitle {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 760px;
+      margin: 0 auto 34px;
+    }
+    .step-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+      height: 100%;
+      box-shadow: 0 12px 30px rgba(17,24,39,.06);
+    }
+    .step-number {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: #111827;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+    .step-card h3 {
+      font-size: 1.15rem;
+      font-weight: 900;
+      margin-bottom: 9px;
+    }
+    .detail-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      height: 100%;
+    }
+    .detail-card i { color: var(--gold-dark); font-size: 1.6rem; margin-bottom: 14px; }
+    .detail-card h3 { font-size: 1.05rem; font-weight: 900; }
+    footer {
+      background: var(--black);
+      color: #cbd5e1;
+      padding: 32px 0;
+      font-size: .92rem;
+    }
+    @media (max-width: 991px) {
+      .hero { padding: 62px 0 46px; }
+      .hero-card { margin-top: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-strip">Website launch request received</div>
+
+  <section class="hero">
+    <div class="container position-relative" style="z-index:2;">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-7">
+          <div class="eyebrow"><i class="fa-solid fa-circle-check me-2"></i> Payment received</div>
+          <h1>Thank You — Your Website Launch Is Now Underway.</h1>
+          <p class="lead-copy">Your launch request has been received. The next step is to prepare your approved website for going live properly, securely and professionally.</p>
+          <a href="mailto:hello@yourdomain.co.uk" class="btn-main"><i class="fa-solid fa-envelope"></i> Send Any Extra Details</a>
+        </div>
+        <div class="col-lg-5">
+          <div class="hero-card text-center">
+            <div class="success-icon"><i class="fa-solid fa-check"></i></div>
+            <h2 class="fw-black" style="font-weight:900;">What Happens Next?</h2>
+            <p class="mb-0">The website will now be checked, finalised and prepared for launch. If anything else is needed, you’ll be contacted directly.</p>
+            <div class="price-box text-start">
+              <div><strong>Launch payment:</strong> £497</div>
+              <div><strong>Ongoing renewal:</strong> £197 per year after the first 12 months</div>
+            </div>
+            <p class="small text-muted mb-0">Domain, hosting, SSL and maintenance are included as part of the website package.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-light">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="section-title">The Launch Process</h2>
+        <p class="section-subtitle">Your website has already been designed. These are the final steps before it is launched for your business.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h3>Final Review</h3>
+            <p class="mb-0">The approved design is checked for content, contact details, mobile layout and any final amendments.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h3>Domain & Hosting</h3>
+            <p class="mb-0">Your domain, hosting, SSL certificate and core website setup are prepared for launch.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h3>Website Goes Live</h3>
+            <p class="mb-0">Once everything is ready, your professional website is published online and checked across devices.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="step-card">
+            <div class="step-number">4</div>
+            <h3>Ongoing Support</h3>
+            <p class="mb-0">Your website stays online, secure and maintained, with annual renewal after your first 12 months.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="detail-card">
+            <i class="fa-solid fa-image"></i>
+            <h3>Send Final Photos</h3>
+            <p class="mb-0">If there are any extra job photos, logos or reviews you’d like included, send them over as soon as possible.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="detail-card">
+            <i class="fa-solid fa-phone"></i>
+            <h3>Check Contact Details</h3>
+            <p class="mb-0">Make sure the correct phone number, email address, business name and service areas are being used.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="detail-card">
+            <i class="fa-solid fa-rocket"></i>
+            <h3>Prepare To Launch</h3>
+            <p class="mb-0">Once the final checks are complete, your website will be launched and ready to share with customers.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-light">
+    <div class="container text-center">
+      <h2 class="section-title">Need To Send Anything Over?</h2>
+      <p class="section-subtitle">Photos, logos, reviews, service updates or contact details can all be sent before launch.</p>
+      <a href="mailto:hello@yourdomain.co.uk" class="btn-main"><i class="fa-solid fa-paper-plane"></i> Send Extra Details</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container text-center">
+      <div class="fw-bold text-white mb-1">Professional Website Launch</div>
+      <div>Thank you. Your approved website is now being prepared for launch.</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
