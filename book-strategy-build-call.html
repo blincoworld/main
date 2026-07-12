@@ -76,6 +76,49 @@
       box-shadow:0 24px 50px rgba(24,119,242,.40);
     }
 
+
+    .confirmation-card{
+      background:white;
+      border:1px solid var(--line);
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      max-width:900px;
+      margin:0 auto;
+    }
+    .confirmation-head{
+      background:#06111f;
+      color:white;
+      padding:36px;
+      text-align:center;
+    }
+    .confirmation-head h2{
+      font-weight:900;
+      letter-spacing:-.04em;
+      margin:0;
+    }
+    .confirmation-head p{
+      color:#cbd5e1;
+      margin:12px 0 0;
+    }
+    .confirmation-body{
+      padding:36px;
+      background:#fff;
+      text-align:center;
+    }
+    .confirmation-icon{
+      width:72px;
+      height:72px;
+      border-radius:50%;
+      background:#dcfce7;
+      color:#166534;
+      display:grid;
+      place-items:center;
+      font-size:2rem;
+      font-weight:900;
+      margin:0 auto 22px;
+    }
+
 </style>
 </head>
 <body>
@@ -130,7 +173,7 @@
   </div>
 </section>
 
-<section style="background:white;">
+<section id="bookingSection" style="background:white;">
   <div class="container">
     <div class="row g-5 align-items-start">
       <div class="col-lg-8">
@@ -156,6 +199,26 @@ Cal.config.forwardQueryParams = true;
   });
 
   Cal.ns.planningcall("ui", {"hideEventTypeDetails":true,"layout":"month_view"});
+
+  Cal.ns.planningcall("on", {
+    action: "bookingSuccessfulV2",
+    callback: function (event) {
+      console.log("Cal.com booking successful:", event);
+
+      const bookingSection = document.getElementById("bookingSection");
+      const bookingConfirmed = document.getElementById("bookingConfirmed");
+
+      if (bookingSection) bookingSection.style.display = "none";
+
+      if (bookingConfirmed) {
+        bookingConfirmed.style.display = "block";
+        bookingConfirmed.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }
+    }
+  });
   </script>
   <!-- Cal inline embed code ends -->
 <!-- 
@@ -208,6 +271,49 @@ Cal.config.forwardQueryParams = true;
           <div class="warning mt-4">
             Once your call is booked, check your email for the confirmation and calendar invite.
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="bookingConfirmed" style="display:none;background:white;">
+  <div class="container">
+    <div class="confirmation-card">
+      <div class="confirmation-head">
+        <h2>You’re All Booked In</h2>
+        <p>Your Strategy &amp; Build Planning Call has been reserved.</p>
+      </div>
+
+      <div class="confirmation-body">
+        <div class="confirmation-icon">✓</div>
+
+        <h3 style="font-weight:900;letter-spacing:-.04em;">
+          Excellent — I’ll speak to you soon.
+        </h3>
+
+        <p class="text-muted mt-3">
+          Your booking confirmation and calendar invitation should arrive by email shortly.
+        </p>
+
+        <div class="green-box mt-4 text-start">
+          <strong>Before the call</strong><br>
+          Have a think about how enquiries currently come into your business,
+          where quotes tend to go quiet, and what you would most like the new
+          system to improve.
+        </div>
+
+        <div class="warning mt-4 text-start">
+          <strong>Need to change anything?</strong><br>
+          If you need to rearrange, just drop me a message on Facebook and we’ll sort it out.
+          <br><br>
+          <a href="https://facebook.com/YOURPAGE"
+             class="btn-facebook"
+             target="_blank"
+             rel="noopener">
+            Message Me on Facebook
+          </a>
         </div>
       </div>
     </div>
