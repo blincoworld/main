@@ -1914,7 +1914,35 @@ color:#111827;
   font-weight:700;
   line-height:1.5;
 }
-</style></head>
+</style>
+<style id="mobile-package-render-fix">
+/* Keep the tall four-level package section immediately visible on mobile.
+   Animating the entire container required a percentage of a several-thousand-pixel
+   element to enter the viewport before it could appear. */
+@media (max-width: 767px){
+  #cta .packages-shell,
+  #cta .packages-grid,
+  #cta .package-card{
+    opacity:1 !important;
+    transform:none !important;
+    visibility:visible !important;
+  }
+
+  #cta .package-card{
+    content-visibility:auto;
+    contain-intrinsic-size:900px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .fade-up{
+    opacity:1 !important;
+    transform:none !important;
+    transition:none !important;
+  }
+}
+</style>
+</head>
 <body>
 <div class="page-wrap">
 <nav class="navbar navbar-expand-lg navbar-dark nav-blur fixed-top">
@@ -2339,7 +2367,7 @@ color:#111827;
 </section>
 <section id="cta">
 <div class="container">
-<div class="packages-shell fade-up">
+<div class="packages-shell">
 <div class="packages-intro">
 <div class="july-pricing-banner">Four Levels. One Clear Upgrade Path.</div>
 <h2>Choose the system your business needs now.</h2>
@@ -2573,10 +2601,26 @@ If, after our strategy call, we both agree we're not the right fit to work toget
 <script>
 (function(){
   const els=document.querySelectorAll('.fade-up');
-  const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});},{threshold:.12});
-  els.forEach(el=>io.observe(el));
+  if ('IntersectionObserver' in window) {
+    const io=new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    },{threshold:0,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(el=>io.observe(el));
+  } else {
+    els.forEach(el=>el.classList.add('in'));
+  }
   const sticky=document.getElementById('stickyCta');
-  window.addEventListener('scroll',()=>{if(window.scrollY>850)sticky.classList.add('show');else sticky.classList.remove('show');});
+  if(sticky){
+    window.addEventListener('scroll',()=>{
+      if(window.scrollY>850)sticky.classList.add('show');
+      else sticky.classList.remove('show');
+    },{passive:true});
+  }
   $('a[href^="#"]').on('click',function(e){const target=$($(this).attr('href'));if(target.length){e.preventDefault();$('html, body').animate({scrollTop:target.offset().top-80},450);}});
   function updateRevenueCheck(){
     const avg=parseFloat(document.getElementById('avgJob')?.value||0);
