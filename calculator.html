@@ -1436,7 +1436,7 @@ color:#111827;
   margin:0 !important;
 }
 
-/* 2) Pipeline: restore Trello-style board */
+/* 2) Pipeline: restore Client Capture Platform-style board */
 #pipeline-visual .pipeline-board{
   display:block !important;
   background:#0f172a !important;
@@ -1861,6 +1861,58 @@ color:#111827;
 
 #final-cta .two-line-cta .cta-sub{
   font-size:.88rem !important;
+}
+</style>
+<style id="four-tier-package-grid">
+#cta .packages-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;align-items:stretch;}
+#cta .package-card,#cta .package-card.package-card--growth{padding:30px 22px;transform:none;min-width:0;}
+#cta .package-card.package-card--growth:hover{transform:translateY(-5px);}
+#cta .package-card h3{font-size:1.45rem;}
+#cta .package-subtitle{min-height:48px;}
+#cta .package-price{font-size:clamp(2.35rem,3vw,3.1rem);}
+#cta .package-card--growth .package-price{font-size:clamp(2.55rem,3.2vw,3.35rem);}
+#cta .package-button{font-size:.88rem;padding-left:12px !important;padding-right:12px !important;}
+@media(max-width:1199px){#cta .packages-grid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:900px;margin-left:auto;margin-right:auto;}#cta .package-subtitle{min-height:auto;}}
+@media(max-width:767px){#cta .packages-grid{grid-template-columns:1fr;max-width:620px;}}
+</style>
+<style id="package-implementation-boxes">
+#cta .package-implementation{
+  margin-top:18px;
+  padding:16px;
+  background:#f8fafc;
+  border:1px solid #e2e8f0;
+  border-radius:14px;
+  text-align:left;
+}
+#cta .package-card--growth .package-implementation{
+  background:#fff7ed;
+  border-color:#fed7aa;
+}
+#cta .package-implementation-label{
+  display:block;
+  margin-bottom:4px;
+  color:#64748b;
+  font-size:.72rem;
+  font-weight:900;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+#cta .package-implementation-time{
+  display:block;
+  color:#0f172a;
+  font-size:1rem;
+  font-weight:900;
+  line-height:1.3;
+}
+#cta .package-card--growth .package-implementation-time{
+  color:#c2410c;
+}
+#cta .package-implementation p{
+  margin:8px 0 0;
+  color:#64748b;
+  font-size:.78rem;
+  font-weight:700;
+  line-height:1.5;
 }
 </style></head>
 <body>
@@ -2289,101 +2341,107 @@ color:#111827;
 <div class="container">
 <div class="packages-shell fade-up">
 <div class="packages-intro">
-<div class="july-pricing-banner">☀️ Summer Build Discount Applied</div>
-<h2>Ready to stop the leaks and start your build?</h2>
-<p class="mb-0 fs-5">Choose the level that best matches where your business is now. Your £497 holding deposit reserves your build slot and forms part of the all-in package price.</p>
-<div class="packages-slot-note">Summer Build Discount Applied — available only while this month’s 2–3 build slots remain.</div>
-<div class="promo-expiry-note">The summer build discount applies only while this month’s remaining build slots are available.</div>
+<div class="july-pricing-banner">Four Levels. One Clear Upgrade Path.</div>
+<h2>Choose the system your business needs now.</h2>
+<p class="mb-0 fs-5">Start with a professional website, add automatic follow-up, introduce a simple lead pipeline, or install a complete Client Capture System for a growing team. Your £497 holding deposit reserves your build slot and forms part of the package price.</p>
+<div class="packages-slot-note">You do not need to guess which level is right. We will review your current enquiry, quote and follow-up process together before any remaining balance is due.</div>
 </div>
 <div class="packages-grid">
 <article class="package-card">
 <div class="package-level">Level 1</div>
-<h3>Foundation</h3>
-<div class="package-subtitle">Professional website &amp; lead capture</div>
-<div class="package-price-wrap">
-<div class="package-price-was">Regular Investment <span>£1,997</span></div>
-<div class="package-price-now-label">Discounted Investment</div>
-<div class="package-price">£997</div>
-</div>
+<h3>Professional Website</h3>
+<div class="package-subtitle">Look credible and capture every enquiry</div>
+<div class="package-price-wrap"><div class="package-price">£997</div></div>
 <div class="package-running-cost">
 <span class="package-running-cost-label">Ongoing hosting &amp; support</span>
 <strong>£297 per year</strong> or <strong>£27 per month</strong>
-<small>Website, hosting and forms kept live.</small>
+<small>Website hosting and enquiry forms kept live.</small>
 </div>
-<p class="package-description">For businesses that need a professional website and a reliable way to capture enquiries.</p>
+<p class="package-description">For businesses that need a professional online presence and a reliable way for customers to get in touch.</p>
 <ul class="package-features">
-<li>Website live within 72 hours</li>
-<li>Mobile-friendly design</li>
-<li>Enquiry form that captures the details you need</li>
-<li>Customers can contact you in the way they prefer</li>
-<li>Every enquiry arrives in one clear place</li>
+<li>Professional mobile-friendly website</li>
+<li>Professional enquiry form</li>
+<li>Optional customer photo uploads</li>
+<li>Every enquiry delivered directly by email</li>
+<li>Clear calls to action for calls, messages and quotes</li>
+<li>No automated follow-up or lead pipeline</li>
 </ul>
-<div class="package-payment-breakdown">
-<strong>Reserve today with a £497 holding deposit.</strong><br/>
-              £500 remaining balance due when your build begins.
-            </div><a class="package-button two-line-cta" href="https://buy.stripe.com/9B65kD8Ug4NFfAO50o67S02" rel="noopener"><span class="cta-main">Choose Foundation</span><span class="cta-sub">Reserve for £497</span></a>
+<div class="package-payment-breakdown"><strong>Reserve today with a £497 holding deposit.</strong><br/>£500 remaining balance due when your build begins.</div>
+<a class="package-button two-line-cta" href="https://buy.stripe.com/9B65kD8Ug4NFfAO50o67S02" rel="noopener"><span class="cta-main">Choose Professional Website</span><span class="cta-sub">Reserve for £497</span></a><div class="package-implementation"><span class="package-implementation-label">Typical implementation</span><strong class="package-implementation-time">Typically 7–14 days</strong><p>Most of the work happens behind the scenes. We only need a small amount of your time to review the design, approve the content and confirm everything before launch.</p></div>
 </article>
 <article class="package-card package-card--growth">
-<div class="package-badge">Recommended for Most Businesses</div>
+<div class="package-badge">Recommended Starting Point</div>
 <div class="package-level">Level 2</div>
-<h3>Growth</h3>
-<div class="package-subtitle">Client Capture System &amp; automation</div>
-<div class="package-price-wrap">
-<div class="package-price-was">Regular Investment <span>£3,997</span></div>
-<div class="package-price-now-label">Discounted Investment</div>
-<div class="package-price">£2,997</div>
-</div>
+<h3>Enquiry Recovery System</h3>
+<div class="package-subtitle">Automatic follow-up without a CRM</div>
+<div class="package-price-wrap"><div class="package-price">£1,997</div></div>
 <div class="package-running-cost">
-<span class="package-running-cost-label">Ongoing system support</span>
+<span class="package-running-cost-label">Ongoing automation support</span>
 <strong>£497 per year</strong> or <strong>£47 per month</strong>
-<small>Website, follow-up, diary and Client Capture System kept live.</small>
+<small>Website hosting, enquiry forms and email automation kept live.</small>
 </div>
-<p class="package-description">For businesses already receiving leads that need follow-up, tracking and diary control.</p>
+<p class="package-description">For businesses that already receive enquiries but lose good prospects because consistent follow-up gets forgotten.</p>
 <ul class="package-features">
-<li>Everything in Foundation</li>
-<li>Automatic follow-up for every new enquiry</li>
-<li>Every lead organised in one simple pipeline</li>
-<li>Always know who needs attention next</li>
-<li>Calls, visits and booked work kept organised</li>
-<li>Fewer promising opportunities quietly go cold</li>
+<li>Everything in Professional Website</li>
+<li>Automated email follow-up system</li>
+<li>Automatic response after a new enquiry</li>
+<li>Follow-up that continues without awkward chasing</li>
+<li>Quote reminder and re-engagement sequences</li>
+<li>Review request automation</li>
+<li>No lead pipeline or full CRM</li>
 </ul>
-<div class="package-payment-breakdown">
-<strong>Reserve today with a £497 holding deposit.</strong><br/>
-              £2,500 remaining balance due when your build begins.
-              <div class="package-flexibility">Need flexibility? Ask about staged payment options.</div>
-</div><a class="package-button package-button--growth two-line-cta" href="https://buy.stripe.com/9B65kD8Ug4NFfAO50o67S02" rel="noopener"><span class="cta-main">Choose Growth</span><span class="cta-sub">Reserve for £497</span></a>
+<div class="package-payment-breakdown"><strong>Reserve today with a £497 holding deposit.</strong><br/>£1,500 remaining balance due when your build begins.<div class="package-flexibility">Staged payment options can be discussed.</div></div>
+<a class="package-button package-button--growth two-line-cta" href="https://buy.stripe.com/9B65kD8Ug4NFfAO50o67S02" rel="noopener"><span class="cta-main">Choose Enquiry Recovery</span><span class="cta-sub">Reserve for £497</span></a><div class="package-implementation"><span class="package-implementation-label">Typical implementation</span><strong class="package-implementation-time">Typically 2–3 weeks</strong><p>We build the website, enquiry journey and email automation for you. Your role is mainly to approve the content and test the finished follow-up before it goes live.</p></div>
 </article>
 <article class="package-card">
 <div class="package-level">Level 3</div>
-<h3>Scale</h3>
-<div class="package-subtitle">Multi-team management &amp; automation</div>
-<div class="package-price-wrap">
-<div class="package-price-was">Regular Investment <span>£6,997</span></div>
-<div class="package-price-now-label">Discounted Investment</div>
-<div class="package-price">£4,997</div>
-</div>
+<h3>Client Capture System</h3>
+<div class="package-subtitle">Follow-up plus simple pipeline control</div>
+<div class="package-price-wrap"><div class="package-price">£4,997</div></div>
 <div class="package-running-cost">
-<span class="package-running-cost-label">Ongoing multi-team support</span>
-<strong>£997 per year</strong> or <strong>£97 per month</strong>
-<small>Calendars, automation and multi-team systems kept live.</small>
+<span class="package-running-cost-label">Ongoing system support</span>
+<strong>Confirmed during your strategy call</strong>
+<small>Based on the integrations, automation and support your setup requires.</small>
 </div>
-<p class="package-description">For established businesses managing multiple teams, calendars and jobs.</p>
+<p class="package-description">For established businesses that want every enquiry followed up and every opportunity visibly organised from first contact to booked job.</p>
 <ul class="package-features">
-<li>Everything in Growth</li>
-<li>Separate calendars for each team or crew</li>
-<li>Send each enquiry and job to the right team</li>
-<li>See where every team is going and what they are doing</li>
-<li>One view of leads, quotes, bookings and active work</li>
-<li>Stronger oversight as the business grows</li>
+<li>Everything in Enquiry Recovery</li>
+<li>Custom lead and quote pipeline</li>
+<li>Automatic lead creation from website enquiries</li>
+<li>Clear stages for new leads, visits, quotes and booked jobs</li>
+<li>Notes, attachments, reminders and next actions</li>
+<li>Simple visibility without the complexity of a full CRM</li>
+<li>Built around your actual sales process</li>
 </ul>
-<div class="package-payment-breakdown">
-<strong>Reserve today with a £497 holding deposit.</strong><br/>
-              £4,500 remaining balance due when your build begins.
-              <div class="package-flexibility">Need flexibility? Ask about staged payment options.</div>
-</div><a class="package-button two-line-cta" href="https://buy.stripe.com/9B65kD8Ug4NFfAO50o67S02" rel="noopener"><span class="cta-main">Choose Scale</span><span class="cta-sub">Reserve for £497</span></a>
+<div class="package-payment-breakdown"><strong>Reserve today with a £497 holding deposit.</strong><br/>£4,500 remaining balance due when your build begins.<div class="package-flexibility">Staged payment options can be discussed.</div></div>
+<a class="package-button two-line-cta" href="https://buy.stripe.com/9B65kD8Ug4NFfAO50o67S02" rel="noopener"><span class="cta-main">Choose Client Capture</span><span class="cta-sub">Reserve for £497</span></a><div class="package-implementation"><span class="package-implementation-label">Typical implementation</span><strong class="package-implementation-time">Typically 3–5 weeks</strong><p>We map your enquiry and quote process, build the client capture platform and test the workflow with you before launch.</p></div>
+</article>
+<article class="package-card">
+<div class="package-level">Level 4</div>
+<h3>Client Capture Enterprise</h3>
+<div class="package-subtitle">Full CRM, automation and team management</div>
+<div class="package-price-wrap"><div class="package-price">£9,997</div></div>
+<div class="package-running-cost">
+<span class="package-running-cost-label">Ongoing platform &amp; support</span>
+<strong>Confirmed during your strategy call</strong>
+<small>Based on users, messaging, calendars, integrations and platform requirements.</small>
+</div>
+<p class="package-description">For growing businesses that need a complete system for managing customers, teams, calendars, quotes and follow-up from one place.</p>
+<ul class="package-features">
+<li>Everything in Client Capture System</li>
+<li>Complete client capture platform configured around your business</li>
+<li>Central customer database and complete contact history</li>
+<li>Multiple pipelines, calendars, users and teams</li>
+<li>Advanced email and SMS automation</li>
+<li>Dashboards, reporting and management visibility</li>
+<li>Deeper integrations built around business operations</li>
+</ul>
+<div class="package-payment-breakdown"><strong>Reserve today with a £497 holding deposit.</strong><br/>£9,500 remaining balance due when your build begins.<div class="package-flexibility">A staged implementation and payment plan can be agreed.</div></div>
+<a class="package-button two-line-cta" href="https://buy.stripe.com/9B65kD8Ug4NFfAO50o67S02" rel="noopener"><span class="cta-main">Choose Enterprise</span><span class="cta-sub">Reserve for £497</span></a><div class="package-implementation"><span class="package-implementation-label">Typical implementation</span><strong class="package-implementation-time">Typically 6–8 weeks</strong><p>The system is implemented in stages around your team, pipelines, calendars and automation requirements, with reviews built into the process.</p></div>
 </article>
 </div>
-<div class="packages-footnote"><strong>Not sure which package fits?</strong> Reserve your slot and we’ll confirm the right level together before any remaining balance is due.</div>
+
+<div class="packages-footnote"><strong>Not sure which package fits?</strong> Reserve your slot and we’ll confirm the right level together before any remaining balance is due. The £497 holding deposit is part of the final package price, not an additional charge.</div>
 </div>
 </div>
 </section>
@@ -2419,11 +2477,12 @@ color:#111827;
 <h4>4. Build The Right System</h4>
 <p>On the call we'll identify where your business is today and confirm which package gives you the right level of support.</p>
 <ul>
-<li><strong>Foundation</strong> – £997 all in (£497 deposit, £500 remaining), then £297/year or £27/month</li>
-<li><strong>Growth</strong> – £2,997 all in (£497 deposit, £2,500 remaining), then £497/year or £47/month</li>
-<li><strong>Scale</strong> – £4,997 all in (£497 deposit, £4,500 remaining), then £997/year or £97/month</li>
+<li><strong>Professional Website</strong> – £997 all in (£497 deposit, £500 remaining)</li>
+<li><strong>Enquiry Recovery System</strong> – £1,997 all in (£497 deposit, £1,500 remaining)</li>
+<li><strong>Client Capture System</strong> – £4,997 all in (£497 deposit, £4,500 remaining)</li>
+<li><strong>Client Capture Enterprise</strong> – £9,997 all in (£497 deposit, £9,500 remaining)</li>
 </ul>
-<p><strong>The £497 holding deposit is part of the package price, not an additional charge.</strong> Flexible staged payment options can be discussed for Growth and Scale if needed.</p>
+<p><strong>The £497 holding deposit is part of the package price, not an additional charge.</strong> Flexible staged payment options can be discussed for the larger systems if needed.</p>
 <div style="background:#ecfdf5;border-left:5px solid #22c55e;padding:18px;border-radius:5px;margin-top:20px;">
 <strong>100% Risk-Free Deposit</strong><br/>
 If, after our strategy call, we both agree we're not the right fit to work together, your £497 deposit will be refunded in full.
@@ -2479,7 +2538,7 @@ If, after our strategy call, we both agree we're not the right fit to work toget
 </div>
 <div class="accordion-item">
 <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-target="#faqTwo" data-bs-toggle="collapse" type="button">How quickly can the website be built?</button></h2>
-<div class="accordion-collapse collapse" data-bs-parent="#pageFaq" id="faqTwo"><div class="accordion-body">Foundation websites are designed to be ready within 72 hours once the required information has been supplied. Larger systems may take longer depending on integrations and team setup.</div></div>
+<div class="accordion-collapse collapse" data-bs-parent="#pageFaq" id="faqTwo"><div class="accordion-body">Professional websites are designed to be ready within 72 hours once the required information has been supplied. Enquiry Recovery, Client Capture and Enterprise systems may take longer depending on automation, integrations and team setup.</div></div>
 </div>
 <div class="accordion-item">
 <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-target="#faqThree" data-bs-toggle="collapse" type="button">Can I use my existing domain?</button></h2>
@@ -2487,7 +2546,7 @@ If, after our strategy call, we both agree we're not the right fit to work toget
 </div>
 <div class="accordion-item">
 <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-target="#faqFour" data-bs-toggle="collapse" type="button">Can I upgrade later?</button></h2>
-<div class="accordion-collapse collapse" data-bs-parent="#pageFaq" id="faqFour"><div class="accordion-body">Yes. You can begin with Foundation and add follow-up, diary or multi-team features as the business grows.</div></div>
+<div class="accordion-collapse collapse" data-bs-parent="#pageFaq" id="faqFour"><div class="accordion-body">Yes. You can begin with the Professional Website, then add automated follow-up, a Client Capture Platform-based Client Capture System or a full Enterprise CRM as the business grows.</div></div>
 </div>
 <div class="accordion-item">
 <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-target="#faqFive" data-bs-toggle="collapse" type="button">What happens after I pay the holding deposit?</button></h2>
