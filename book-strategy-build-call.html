@@ -235,26 +235,41 @@ Cal.config.forwardQueryParams = true;
 
   Cal.ns["free-strategy-build-call"]("ui", {"hideEventTypeDetails":true,"layout":"month_view"});
 
-  Cal.ns["free-strategy-build-call"]("on", {
-    action: "bookingSuccessfulV2",
-    callback: function (event) {
-      console.log("Cal.com booking successful:", event);
+  let bookingHandled = false;
 
-      const bookingSection = document.getElementById("bookingSection");
-      const bookingConfirmed = document.getElementById("bookingConfirmed");
+  function showBookingConfirmation(event) {
+    if (bookingHandled) return;
+    bookingHandled = true;
 
-      if (bookingSection) {
-        bookingSection.style.display = "none";
-      }
+    console.log("Cal.com booking successful:", event);
 
-      if (bookingConfirmed) {
-        bookingConfirmed.style.display = "block";
+    const bookingSection = document.getElementById("bookingSection");
+    const bookingConfirmed = document.getElementById("bookingConfirmed");
+
+    if (bookingSection) {
+      bookingSection.style.display = "none";
+    }
+
+    if (bookingConfirmed) {
+      bookingConfirmed.style.display = "block";
+
+      setTimeout(function () {
         bookingConfirmed.scrollIntoView({
           behavior: "smooth",
           block: "start"
         });
-      }
+      }, 150);
     }
+  }
+
+  Cal.ns["free-strategy-build-call"]("on", {
+    action: "bookingSuccessful",
+    callback: showBookingConfirmation
+  });
+
+  Cal.ns["free-strategy-build-call"]("on", {
+    action: "bookingSuccessfulV2",
+    callback: showBookingConfirmation
   });
   </script>
   <!-- Cal inline embed code ends -->
