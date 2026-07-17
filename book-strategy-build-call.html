@@ -234,6 +234,28 @@ Cal.config.forwardQueryParams = true;
   });
 
   Cal.ns["free-strategy-build-call"]("ui", {"hideEventTypeDetails":true,"layout":"month_view"});
+
+  Cal.ns["free-strategy-build-call"]("on", {
+    action: "bookingSuccessfulV2",
+    callback: function (event) {
+      console.log("Cal.com booking successful:", event);
+
+      const bookingSection = document.getElementById("bookingSection");
+      const bookingConfirmed = document.getElementById("bookingConfirmed");
+
+      if (bookingSection) {
+        bookingSection.style.display = "none";
+      }
+
+      if (bookingConfirmed) {
+        bookingConfirmed.style.display = "block";
+        bookingConfirmed.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }
+    }
+  });
   </script>
   <!-- Cal inline embed code ends -->
 
