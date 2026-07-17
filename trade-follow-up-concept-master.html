@@ -1301,7 +1301,9 @@
         const calculatorUrl = new URL(prospect.calculatorUrl);
         calculatorUrl.searchParams.set("email", payload.email);
         calculatorUrl.searchParams.set("name", payload.name);
-        calculatorUrl.searchParams.set("source", prospect.businessName);
+        calculatorUrl.searchParams.set("business_name", prospect.businessName);
+        calculatorUrl.searchParams.set("trade", prospect.trade);
+        calculatorUrl.searchParams.set("lead_source", "Personalised Concept");
         window.location.href = calculatorUrl.toString();
       } catch (error) {
         console.error(error);
