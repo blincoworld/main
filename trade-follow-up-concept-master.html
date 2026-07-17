@@ -1280,9 +1280,8 @@
         email: String(formData.get("email") || "").trim().toLowerCase(),
         business_name: prospect.businessName,
         trade: prospect.trade,
-        source: "Personalised trade follow-up concept",
-        concept_page: window.location.href,
-        submitted_at: new Date().toISOString()
+        lead_source: "Personalised Concept",
+        lead_stage: "Concept Lead"
       };
 
       leadSubmit.disabled = true;
