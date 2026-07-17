@@ -56,7 +56,7 @@
     .warning{background:#fff7ed;border-left:5px solid #f97316;border-radius:5px;padding:18px;font-weight:800;color:#111827}
     footer{background:#06111f;color:#cbd5e1;padding:36px 0}
     footer strong{color:white}
-    @media(max-width:767px){.hero{padding-top:112px}section{padding:58px 0}.calendar-head,.calendar-body{padding:24px}.embed-placeholder{min-height:520px}}
+    @media(max-width:767px){.hero{padding-top:112px}section{padding:58px 0}.calendar-head,.calendar-body{padding:24px}.embed-placeholder{min-height:520px}#my-cal-inline-planningcall{min-height:620px}}
   
     .btn-facebook{
       background:#1877F2;
@@ -76,6 +76,12 @@
       box-shadow:0 24px 50px rgba(24,119,242,.40);
     }
 
+
+    #my-cal-inline-planningcall{
+      width:100%;
+      min-height:680px;
+      overflow:auto;
+    }
 
     .confirmation-card{
       background:white;
@@ -135,12 +141,12 @@
   <div class="container">
     <div class="eyebrow"><span></span> Questionnaire received</div>
     <h1>Excellent. Let’s get your <span class="highlight">strategy call booked.</span></h1>
-    <p class="hero-lead">Your Business Preparation Questionnaire has been submitted. The final step is to choose a convenient time for your strategy call.</p>
+    <p class="hero-lead">Your quick questionnaire has been submitted. The final step is to choose a convenient time for your free strategy call.</p>
     <p class="hero-lead">On the call, we’ll look at how enquiries currently come into your business, where opportunities may be slipping away, and whether there is a practical system worth building.</p>
     <div class="trust-row">
       <span class="trust-pill">Choose your own time</span>
       <span class="trust-pill">20-minute strategy call</span>
-      <span class="trust-pill">No payment required to book</span>
+      <span class="trust-pill">Free to book</span>
     </div>
   </div>
 </header>
@@ -185,7 +191,7 @@
           <div class="calendar-body">
 
 <!-- Cal inline embed code begins -->
-<div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-planningcall"></div>
+<div id="my-cal-inline-planningcall"></div>
 <script type="text/javascript">
   (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
 Cal("init", "planningcall", {origin:"https://app.cal.com"});
@@ -237,14 +243,7 @@ Cal.config.forwardQueryParams = true;
 
 <div class="warning mt-4">
   <strong>Can't find a suitable day or time?</strong><br><br>
-  Don't worry. If none of the available slots work for you, just drop me a message on Facebook and we'll arrange something that suits us both.
-  <br><br>
-  <a href="https://facebook.com/YOURPAGE"
-     class="btn-facebook"
-     target="_blank"
-     rel="noopener">
-     Message Me on Facebook
-  </a>
+  Don't worry. If none of the available slots work for you, reply to our existing Facebook conversation and we’ll arrange something that suits us both.
 </div>
 
 
@@ -255,8 +254,8 @@ Cal.config.forwardQueryParams = true;
       <div class="col-lg-4">
         <div class="side-card">
           <h3 style="font-weight:900;letter-spacing:-.04em;">Before The Call</h3>
-          <p>I’ll review your questionnaire before we speak so we can use the time properly.</p>
-          <p><strong style="color:#fff;">There is no payment required to book and no obligation to continue after the call.</strong></p>
+          <p>I’ll review your answers before we speak so we can get straight to the most useful part of the conversation.</p>
+          <p><strong style="color:#fff;">The call is completely free to book, with no obligation to continue afterwards.</strong></p>
           <ul>
             <li>Please choose a time you can properly attend.</li>
             <li>Have your current enquiry process in mind.</li>
@@ -266,7 +265,7 @@ Cal.config.forwardQueryParams = true;
 
           <div class="green-box mt-4">
             <strong>If We Decide To Work Together</strong><br>
-            The next step is a £497 Build Reservation. It secures your place in the build queue and is deducted from the cost of your chosen package. If we do not think it is the right fit, there is no obligation to continue.
+            Only if we both decide to go ahead, the next step is a £497 holding deposit. It secures your place in the build queue and is deducted from the cost of your chosen package. There is nothing to pay before or during this call.
           </div>
 
           <div class="warning mt-4">
@@ -305,14 +304,7 @@ Cal.config.forwardQueryParams = true;
 
         <div class="warning mt-4 text-start">
           <strong>Need to change anything?</strong><br>
-          If you need to rearrange, just drop me a message on Facebook and we’ll sort it out.
-          <br><br>
-          <a href="https://facebook.com/YOURPAGE"
-             class="btn-facebook"
-             target="_blank"
-             rel="noopener">
-            Message Me on Facebook
-          </a>
+          If you need to rearrange, reply to our existing Facebook conversation and we’ll sort it out.
         </div>
       </div>
     </div>

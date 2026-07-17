@@ -45,7 +45,7 @@
     .wizard-top h2{font-weight:900;letter-spacing:-.04em;margin:0}
     .wizard-top p{color:#cbd5e1;margin:10px 0 0}
     .progress-track{height:10px;background:rgba(255,255,255,.10);border-radius:999px;overflow:hidden;margin-top:24px}
-    .progress-fill{height:100%;width:16.6%;background:linear-gradient(135deg,var(--orange),var(--amber));border-radius:999px;transition:width .28s ease}
+    .progress-fill{height:100%;width:25%;background:linear-gradient(135deg,var(--orange),var(--amber));border-radius:999px;transition:width .28s ease}
     .wizard-steps{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
     .wizard-step-label{font-size:.78rem;font-weight:900;color:#94a3b8;border:1px solid rgba(255,255,255,.14);padding:7px 10px;border-radius:999px}
     .wizard-step-label.active{color:#111827;background:linear-gradient(135deg,var(--orange),var(--amber));border-color:transparent}
@@ -95,13 +95,13 @@
 <header class="hero" id="top">
   <div class="container">
     <div class="eyebrow"><span></span> Let's make sure we use the call properly</div>
-    <h1>Complete your <span class="highlight">Business Preparation Questionnaire.</span></h1>
-    <p class="hero-lead">This takes around 5 minutes and means I can spend our strategy call focused on your business rather than asking basic questions.</p>
+    <h1>Answer four <span class="highlight">quick questions.</span></h1>
+    <p class="hero-lead">This takes around 60 seconds and gives me enough context to make your free Strategy & Build Call useful from the start.</p>
     <p class="hero-lead">Once you submit this form you'll be taken to the calendar to book your strategy call.</p>
     <div class="trust-row">
-      <span class="trust-pill">Step-by-step form</span>
-      <span class="trust-pill">Takes around 5 minutes</span>
-      <span class="trust-pill">No obligation strategy call</span>
+      <span class="trust-pill">Four quick steps</span>
+      <span class="trust-pill">Takes around 60 seconds</span>
+      <span class="trust-pill">Free, no-obligation call</span>
     </div>
   </div>
 </header>
@@ -113,7 +113,7 @@
         <div class="step-card">
           <div class="step-num">1</div>
           <h4><strong>Business Questionnaire</strong></h4>
-          <p class="text-muted mb-0">Tell me about the business without being hit by a giant wall of form fields.</p>
+          <p class="text-muted mb-0">Answer a handful of quick questions so I can prepare properly.</p>
         </div>
       </div>
       <div class="col-md-4">
@@ -127,7 +127,7 @@
         <div class="step-card">
           <div class="step-num">3</div>
           <h4><strong>Your Personalised Build Plan</strong></h4>
-          <p class="text-muted mb-0">On the call, we’ll work out whether Starter, Standard or Elite is the right fit.</p>
+          <p class="text-muted mb-0">On the call, we’ll work out which level, if any, makes the most sense for your business.</p>
         </div>
       </div>
     </div>
@@ -141,15 +141,13 @@
         <div class="wizard-shell">
           <div class="wizard-top">
             <h2>Business Build Questionnaire</h2>
-            <p>Complete one short step at a time. Your answers will be sent before you book your call.</p>
+            <p>Four quick steps. Most answers are one tap, then you can choose your call time.</p>
             <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
             <div class="wizard-steps" id="stepLabels">
               <span class="wizard-step-label active">Your Details</span>
-              <span class="wizard-step-label">Online Presence</span>
-              <span class="wizard-step-label">Business Stage</span>
-              <span class="wizard-step-label">Lead Flow</span>
-              <span class="wizard-step-label">The Leak</span>
-              <span class="wizard-step-label">Call Prep</span>
+              <span class="wizard-step-label">Your Business</span>
+              <span class="wizard-step-label">Main Challenge</span>
+              <span class="wizard-step-label">Main Goal</span>
             </div>
           </div>
 
@@ -159,16 +157,16 @@
             <input type="hidden" name="_subject" value="New Client Capture System Build Questionnaire">
             <input type="text" name="_gotcha" style="display:none">
 
-            <input type="hidden" id="BusinessStageHidden" name="Business Stage">
-            <input type="hidden" id="LeadFlowHidden" name="Current Lead Flow">
-            <input type="hidden" id="WorkSourceHidden" name="Main Source Of Work">
+            <input type="hidden" id="TradeHidden" name="Main Trade or Service">
+            <input type="hidden" id="ChallengeHidden" name="Main Challenge">
+            <input type="hidden" id="GoalHidden" name="Main Goal">
 
             <div class="wizard-body">
               <div class="error-box" id="errorBox">Please complete the required fields before continuing.</div>
 
               <div class="wizard-pane active" data-step="0">
                 <h3 class="pane-title">First, your basic details.</h3>
-                <p class="pane-hint">This is simply so I know who the questionnaire belongs to.</p>
+                <p class="pane-hint">Just so I know who the call belongs to.</p>
                 <div class="row g-3">
                   <div class="col-md-6">
                     <label for="name">Your Name *</label>
@@ -190,140 +188,95 @@
               </div>
 
               <div class="wizard-pane" data-step="1">
-                <h3 class="pane-title">Where can people find you online?</h3>
-                <p class="pane-hint">Facebook page, website, or whatever prospects currently check before contacting you.</p>
-                <div class="row g-3">
+                <h3 class="pane-title">Tell me about the business.</h3>
+                <p class="pane-hint">Choose the closest trade, then tell me the main area you cover.</p>
+
+                <label class="mb-3">What trade are you in? *</label>
+                <div class="option-grid single-choice" data-hidden="TradeHidden">
+                  <div class="option-card" tabindex="0" data-value="Roofing">
+                    <div class="option-icon">R</div><div><div class="option-title">Roofing</div></div>
+                  </div>
+                  <div class="option-card" tabindex="0" data-value="Landscaping">
+                    <div class="option-icon">L</div><div><div class="option-title">Landscaping</div></div>
+                  </div>
+                  <div class="option-card" tabindex="0" data-value="Plumbing / Heating">
+                    <div class="option-icon">P</div><div><div class="option-title">Plumbing / Heating</div></div>
+                  </div>
+                  <div class="option-card" tabindex="0" data-value="Building / Construction">
+                    <div class="option-icon">B</div><div><div class="option-title">Building / Construction</div></div>
+                  </div>
+                  <div class="option-card" tabindex="0" data-value="Kitchens / Bathrooms">
+                    <div class="option-icon">K</div><div><div class="option-title">Kitchens / Bathrooms</div></div>
+                  </div>
+                  <div class="option-card" tabindex="0" data-value="Other">
+                    <div class="option-icon">+</div><div><div class="option-title">Other</div></div>
+                  </div>
+                </div>
+
+                <div class="row g-3 mt-3">
                   <div class="col-md-6">
-                    <label for="facebook">Facebook Page</label>
-                    <input class="form-control" id="facebook" name="Facebook Page" type="url" placeholder="https://facebook.com/...">
+                    <label for="otherTrade">If Other, what do you do?</label>
+                    <input class="form-control" id="otherTrade" name="Other Trade" type="text" placeholder="Fencing, flooring, plastering...">
                   </div>
                   <div class="col-md-6">
-                    <label for="website">Website / Current Page</label>
-                    <input class="form-control" id="website" name="Website" type="url" placeholder="https://...">
-                  </div>
-                  <div class="col-md-6">
-                    <label for="trade">Main Trade / Service *</label>
-                    <input class="form-control required-step" id="trade" name="Main Trade or Service" type="text" placeholder="Roofing, landscaping, kitchens..." required>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="area">Area Covered *</label>
-                    <input class="form-control required-step" id="area" name="Area Covered" type="text" placeholder="Chester, Wirral, North Wales..." required>
+                    <label for="area">Where do you mainly work? *</label>
+                    <input class="form-control required-step" id="area" name="Area Covered" type="text" placeholder="Chester, Surrey, North Wales..." required>
                   </div>
                 </div>
               </div>
 
               <div class="wizard-pane" data-step="2">
-                <h3 class="pane-title">Where is the business right now?</h3>
-                <p class="pane-hint">Choose the closest match. This helps decide whether Starter, Standard or Elite makes sense.</p>
-                <div class="option-grid single-choice" data-hidden="BusinessStageHidden">
-                  <div class="option-card" tabindex="0" data-value="Starting out / getting organised">
-                    <div class="option-icon">1</div><div><div class="option-title">Starting out / getting organised</div><div class="option-desc">You need the basics in place properly.</div></div>
-                  </div>
-                  <div class="option-card" tabindex="0" data-value="Established, but enquiries and follow-up are messy">
-                    <div class="option-icon">2</div><div><div class="option-title">Established but messy</div><div class="option-desc">Work comes in, but things slip through cracks.</div></div>
-                  </div>
-                  <div class="option-card" tabindex="0" data-value="Plenty of leads, but I want more control over the diary">
-                    <div class="option-icon">3</div><div><div class="option-title">Plenty of leads</div><div class="option-desc">You want control, consistency and better follow-up.</div></div>
-                  </div>
-                  <div class="option-card" tabindex="0" data-value="Multiple teams / jobs / enquiries to manage">
-                    <div class="option-icon">4</div><div><div class="option-title">Multiple teams / jobs</div><div class="option-desc">You need a more advanced system to keep track.</div></div>
-                  </div>
-                </div>
+                <h3 class="pane-title">What is the main challenge right now?</h3>
+                <p class="pane-hint">Choose the closest match. We can unpack the detail on the call.</p>
 
-                <div class="row g-3 mt-3">
-                  <div class="col-md-6">
-                    <label for="team">Team Size</label>
-                    <input class="form-control" id="team" name="Team Size" type="text" placeholder="Just me, 2 teams, 5 vans...">
+                <div class="option-grid single-choice" data-hidden="ChallengeHidden">
+                  <div class="option-card" tabindex="0" data-value="I need more enquiries">
+                    <div class="option-icon">1</div><div><div class="option-title">I need more enquiries</div><div class="option-desc">You want a steadier flow of opportunities.</div></div>
                   </div>
-                  <div class="col-md-6">
-                    <label for="avgjob">Average Job Value</label>
-                    <input class="form-control" id="avgjob" name="Average Job Value" type="text" placeholder="£500, £2,000, £10,000...">
+                  <div class="option-card" tabindex="0" data-value="Enquiries are not turning into enough jobs">
+                    <div class="option-icon">2</div><div><div class="option-title">Enquiries are not turning into enough jobs</div><div class="option-desc">Too many prospects disappear or choose someone else.</div></div>
+                  </div>
+                  <div class="option-card" tabindex="0" data-value="I am losing track of enquiries and quotes">
+                    <div class="option-icon">3</div><div><div class="option-title">I am losing track of enquiries and quotes</div><div class="option-desc">Things are spread across messages, calls and notes.</div></div>
+                  </div>
+                  <div class="option-card" tabindex="0" data-value="I want better systems and organisation">
+                    <div class="option-icon">4</div><div><div class="option-title">I want better systems and organisation</div><div class="option-desc">You want more control without more admin.</div></div>
+                  </div>
+                  <div class="option-card" tabindex="0" data-value="I am not sure yet">
+                    <div class="option-icon">?</div><div><div class="option-title">I am not sure yet</div><div class="option-desc">That is fine. We will work it out together.</div></div>
                   </div>
                 </div>
               </div>
 
               <div class="wizard-pane" data-step="3">
-                <h3 class="pane-title">What does your lead flow look like?</h3>
-                <p class="pane-hint">This helps identify whether the issue is lead volume, enquiry handling, follow-up, or diary control.</p>
+                <h3 class="pane-title">What would you most like to improve?</h3>
+                <p class="pane-hint">Pick the outcome that would make the biggest difference over the next few months.</p>
 
-                <label class="mb-3">Current Lead Flow *</label>
-                <div class="option-grid single-choice mb-4" data-hidden="LeadFlowHidden">
-                  <div class="option-card" tabindex="0" data-value="Quiet / inconsistent">
-                    <div class="option-icon">A</div><div><div class="option-title">Quiet / inconsistent</div><div class="option-desc">You want a steadier flow of opportunities.</div></div>
+                <div class="option-grid single-choice" data-hidden="GoalHidden">
+                  <div class="option-card" tabindex="0" data-value="Book more work">
+                    <div class="option-icon">1</div><div><div class="option-title">Book more work</div></div>
                   </div>
-                  <div class="option-card" tabindex="0" data-value="Some enquiries, but not enough">
-                    <div class="option-icon">B</div><div><div class="option-title">Some enquiries</div><div class="option-desc">There is activity, but not enough consistency.</div></div>
+                  <div class="option-card" tabindex="0" data-value="Improve conversion">
+                    <div class="option-icon">2</div><div><div class="option-title">Improve conversion</div></div>
                   </div>
-                  <div class="option-card" tabindex="0" data-value="Good enquiry flow, but follow-up is weak">
-                    <div class="option-icon">C</div><div><div class="option-title">Good enquiry flow</div><div class="option-desc">The issue is converting and chasing what you already have.</div></div>
+                  <div class="option-card" tabindex="0" data-value="Save admin time">
+                    <div class="option-icon">3</div><div><div class="option-title">Save admin time</div></div>
                   </div>
-                  <div class="option-card" tabindex="0" data-value="Busy, but things are hard to track">
-                    <div class="option-icon">D</div><div><div class="option-title">Busy but hard to track</div><div class="option-desc">You need visibility and control.</div></div>
+                  <div class="option-card" tabindex="0" data-value="Get better organised">
+                    <div class="option-icon">4</div><div><div class="option-title">Get better organised</div></div>
                   </div>
-                </div>
-
-                <label class="mb-3">Main Source Of Work *</label>
-                <div class="option-grid single-choice" data-hidden="WorkSourceHidden">
-                  <div class="option-card" tabindex="0" data-value="Recommendations / word of mouth">
-                    <div class="option-icon">★</div><div><div class="option-title">Recommendations</div><div class="option-desc">Word of mouth and referrals.</div></div>
+                  <div class="option-card" tabindex="0" data-value="Grow the business">
+                    <div class="option-icon">5</div><div><div class="option-title">Grow the business</div></div>
                   </div>
-                  <div class="option-card" tabindex="0" data-value="Facebook">
-                    <div class="option-icon">f</div><div><div class="option-title">Facebook</div><div class="option-desc">Page, groups, Messenger or posts.</div></div>
-                  </div>
-                  <div class="option-card" tabindex="0" data-value="Google">
-                    <div class="option-icon">G</div><div><div class="option-title">Google</div><div class="option-desc">Google Business Profile, search or map pack.</div></div>
-                  </div>
-                  <div class="option-card" tabindex="0" data-value="A bit of everything">
-                    <div class="option-icon">+</div><div><div class="option-title">A bit of everything</div><div class="option-desc">Several sources bring work in.</div></div>
+                  <div class="option-card" tabindex="0" data-value="Other">
+                    <div class="option-icon">+</div><div><div class="option-title">Other</div></div>
                   </div>
                 </div>
 
                 <div class="row g-3 mt-3">
-                  <div class="col-md-6">
-                    <label for="quotes">Roughly How Many Quotes Per Month?</label>
-                    <input class="form-control" id="quotes" name="Quotes Per Month" type="text" placeholder="Rough number is fine">
-                  </div>
-                </div>
-              </div>
-
-              <div class="wizard-pane" data-step="4">
-                <h3 class="pane-title">Where do you think money is leaking?</h3>
-                <p class="pane-hint">This is the important bit. Tell me what happens after someone first makes contact.</p>
-                <div class="row g-3">
                   <div class="col-12">
-                    <label for="problem">If You Could Fix One Thing In The Next 90 Days, What Would It Be? *</label>
-                    <textarea class="form-control required-step" id="problem" name="Biggest Revenue Leak" required placeholder="Slow replies, forgotten quotes, missed Facebook messages, no follow-up, no website, too many jobs to track..."></textarea>
-                  </div>
-                  <div class="col-12">
-                    <label for="currentprocess">What Happens When A New Enquiry Comes In?</label>
-                    <textarea class="form-control" id="currentprocess" name="Current Enquiry Process" placeholder="Example: they message on Facebook, I reply when I can, quote over WhatsApp, then try to remember to chase..."></textarea>
-                  </div>
-                  <div class="col-12">
-                    <label for="followup">What Normally Happens After You've Sent A Quote?</label>
-                    <textarea class="form-control" id="followup" name="Current Follow Up Process" placeholder="Example: I try to remember, I send one text, I don't really chase, office handles it..."></textarea>
-                  </div>
-                </div>
-              </div>
-
-              <div class="wizard-pane" data-step="5">
-                <h3 class="pane-title">Last step before you choose your call time.</h3>
-                <p class="pane-hint">Give me the outcome you want from the system and any preferred call times.</p>
-                <div class="row g-3">
-                  <div class="col-12">
-                    <label for="goals">What Would Make The Biggest Difference To Your Business Over The Next 90 Days? *</label>
-                    <textarea class="form-control required-step" id="goals" name="Main Goal" required placeholder="More booked calls, better follow-up, better diary control, fewer missed jobs, more Google reviews..."></textarea>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="preferred_day">Preferred Day For The Call</label>
-                    <input class="form-control" id="preferred_day" name="Preferred Call Day" type="text" placeholder="Tuesday / Wednesday / any weekday">
-                  </div>
-                  <div class="col-md-6">
-                    <label for="preferred_time">Preferred Time</label>
-                    <input class="form-control" id="preferred_time" name="Preferred Call Time" type="text" placeholder="Morning / afternoon / 10am">
-                  </div>
-                  <div class="col-12">
-                    <label for="notes">Anything Else I Should Know?</label>
-                    <textarea class="form-control" id="notes" name="Additional Notes" placeholder="Anything useful before we speak."></textarea>
+                    <label for="notes">Anything you would like me to look at before we speak?</label>
+                    <textarea class="form-control" id="notes" name="Additional Notes" placeholder="Optional — a website, Facebook page or anything useful before the call."></textarea>
                   </div>
                 </div>
               </div>
@@ -331,10 +284,10 @@
               <div class="wizard-nav">
                 <button type="button" class="btn-back" id="prevBtn" disabled>Back</button>
                 <button type="button" class="btn-main" id="nextBtn">Continue</button>
-                <button type="submit" class="btn-main" id="submitBtn" style="display:none;">Submit Questionnaire & Choose My Call Time</button>
+                <button type="submit" class="btn-main" id="submitBtn" style="display:none;">Choose My Free Call Time</button>
               </div>
 
-              <p class="small-note mt-3 mb-0">After submitting, you’ll be redirected to the calendar page to book your Strategy & Build Planning Call.</p>
+              <p class="small-note mt-3 mb-0">After submitting, you’ll be redirected to the calendar to choose a time for your free Strategy & Build Call.</p>
             </div>
           </form>
         </div>
@@ -347,15 +300,15 @@
           <ul>
             <li>We’ll go over where your business is now.</li>
             <li>We’ll identify the biggest leaks.</li>
-            <li>We’ll decide whether Starter, Standard or Elite makes sense.</li>
-            <li>Your £497 deposit is deducted from whichever level you choose.</li>
+            <li>We’ll decide which level, if any, makes sense for your business.</li>
+            <li>If you decide to go ahead, the £497 holding deposit is deducted from your chosen package.</li>
           </ul>
           <div class="green-box mt-4">
-            <strong>If We Decide To Work Together</strong><br>
-            If, at the end of the strategy call, we both agree it's the right fit, the next step is a £497 Build Reservation. That secures your place in the build queue and is deducted from your chosen package. If we don't think we're a good fit, there's absolutely no obligation to continue.
+            <strong>If You Decide To Go Ahead</strong><br>
+            The call is completely free. If, after the call, you decide to move forward, the next step is a £497 holding deposit. That secures your place in the build queue and is deducted from your chosen package. There is no obligation to continue.
           </div>
           <div class="warning mt-4">
-            Please complete this before booking your call so the conversation is focused and useful.
+            This takes around 60 seconds and helps me make the call focused and useful.
           </div>
         </div>
       </div>
@@ -383,7 +336,7 @@
   const errorBox = document.getElementById('errorBox');
   let step = 0;
 
-  function showStep(index){
+  function showStep(index, shouldScroll = true){
     step = index;
     panes.forEach((pane, i) => pane.classList.toggle('active', i === step));
     labels.forEach((label, i) => label.classList.toggle('active', i === step));
@@ -392,7 +345,9 @@
     nextBtn.style.display = step === panes.length - 1 ? 'none' : 'inline-block';
     submitBtn.style.display = step === panes.length - 1 ? 'inline-block' : 'none';
     errorBox.style.display = 'none';
-    document.querySelector('.wizard-shell').scrollIntoView({behavior:'smooth', block:'start'});
+    if(shouldScroll){
+      document.querySelector('.wizard-shell').scrollIntoView({behavior:'smooth', block:'start'});
+    }
   }
 
   function validateStep(){
@@ -506,7 +461,7 @@
     }
   });
 
-  showStep(0);
+  showStep(0, false);
 })();
 </script>
 
