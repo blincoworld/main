@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Book Your Strategy & Build Planning Call | Piers Blinco</title>
-  <meta name="description" content="Your questionnaire has been received. Choose a day and time for your Strategy & Build Planning Call.">
+  <title>Book Your Strategy Call | Piers Blinco</title>
+  <meta name="description" content="Your questionnaire has been received. Choose a convenient day and time for your no-obligation strategy call.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&display=swap" rel="stylesheet">
@@ -56,7 +56,7 @@
     .warning{background:#fff7ed;border-left:5px solid #f97316;border-radius:5px;padding:18px;font-weight:800;color:#111827}
     footer{background:#06111f;color:#cbd5e1;padding:36px 0}
     footer strong{color:white}
-    @media(max-width:767px){.hero{padding-top:112px}section{padding:58px 0}.calendar-head,.calendar-body{padding:24px}.embed-placeholder{min-height:520px}}
+    @media(max-width:767px){.hero{padding-top:112px}section{padding:58px 0}.calendar-head,.calendar-body{padding:24px}.embed-placeholder{min-height:520px}#my-cal-inline-planningcall{min-height:620px}}
   
     .btn-facebook{
       background:#1877F2;
@@ -76,6 +76,12 @@
       box-shadow:0 24px 50px rgba(24,119,242,.40);
     }
 
+
+    #my-cal-inline-planningcall{
+      width:100%;
+      min-height:680px;
+      overflow:auto;
+    }
 
     .confirmation-card{
       background:white;
@@ -120,6 +126,35 @@
     }
 
 </style>
+
+<style id="hero-heading-typography-fix">
+.hero{
+  overflow:visible !important;
+}
+.hero h1{
+  line-height:.98 !important;
+  padding-right:18px;
+  padding-bottom:.08em;
+  overflow:visible !important;
+}
+.hero h1 .highlight{
+  display:inline-block;
+  margin-top:.08em;
+  padding-right:.08em;
+  padding-bottom:.10em;
+  overflow:visible;
+}
+@media(max-width:575px){
+  .hero h1{
+    line-height:1 !important;
+    padding-right:10px;
+    padding-bottom:.10em;
+  }
+  .hero h1 .highlight{
+    padding-bottom:.12em;
+  }
+}
+</style>
 </head>
 <body>
 
@@ -134,13 +169,13 @@
 <header class="hero" id="top">
   <div class="container">
     <div class="eyebrow"><span></span> Questionnaire received</div>
-    <h1>Excellent. You’re <span class="highlight">nearly done.</span></h1>
-    <p class="hero-lead">Your Business Build Questionnaire has been submitted. The final step is to choose a convenient time for your Strategy & Build Planning Call.</p>
-    <p class="hero-lead">On the call, we’ll go through your business properly, find where opportunities are leaking, and work out whether Starter, Standard or Elite is the right fit.</p>
+    <h1>Excellent. Let’s get your <span class="highlight">strategy call booked.</span></h1>
+    <p class="hero-lead">Your quick questionnaire has been submitted. The final step is to choose a convenient time for your free strategy call.</p>
+    <p class="hero-lead">On the call, we’ll look at how enquiries currently come into your business, where opportunities may be slipping away, and whether there is a practical system worth building.</p>
     <div class="trust-row">
       <span class="trust-pill">Choose your own time</span>
-      <span class="trust-pill">Strategy & Build Planning Call</span>
-      <span class="trust-pill">Your £497 deposit comes off the final package</span>
+      <span class="trust-pill">20-minute strategy call</span>
+      <span class="trust-pill">Free to book</span>
     </div>
   </div>
 </header>
@@ -165,8 +200,8 @@
       <div class="col-md-4">
         <div class="step-card">
           <div class="step-num">3</div>
-          <h4><strong>Choose The Level</strong></h4>
-          <p class="text-muted mb-0">We’ll decide whether Starter, Standard or Elite is the right fit for where the business is now.</p>
+          <h4><strong>Decide The Next Step</strong></h4>
+          <p class="text-muted mb-0">If it makes sense to work together, I’ll recommend the most suitable implementation level and explain the next step.</p>
         </div>
       </div>
     </div>
@@ -185,66 +220,26 @@
           <div class="calendar-body">
 
 <!-- Cal inline embed code begins -->
-<div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-planningcall"></div>
+<div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-free-strategy-build-call"></div>
 <script type="text/javascript">
   (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-Cal("init", "planningcall", {origin:"https://app.cal.com"});
+Cal("init", "free-strategy-build-call", {origin:"https://app.cal.com"});
 Cal.config = Cal.config || {};
 Cal.config.forwardQueryParams = true;
 
-  Cal.ns.planningcall("inline", {
-    elementOrSelector:"#my-cal-inline-planningcall",
+  Cal.ns["free-strategy-build-call"]("inline", {
+    elementOrSelector:"#my-cal-inline-free-strategy-build-call",
     config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"auto"},
-    calLink: "piers-blinco-f4stjz/planningcall",
+    calLink: "piers-blinco-f4stjz/free-strategy-build-call",
   });
 
-  Cal.ns.planningcall("ui", {"hideEventTypeDetails":true,"layout":"month_view"});
-
-  Cal.ns.planningcall("on", {
-    action: "bookingSuccessfulV2",
-    callback: function (event) {
-      console.log("Cal.com booking successful:", event);
-
-      const bookingSection = document.getElementById("bookingSection");
-      const bookingConfirmed = document.getElementById("bookingConfirmed");
-
-      if (bookingSection) bookingSection.style.display = "none";
-
-      if (bookingConfirmed) {
-        bookingConfirmed.style.display = "block";
-        bookingConfirmed.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-      }
-    }
-  });
+  Cal.ns["free-strategy-build-call"]("ui", {"hideEventTypeDetails":true,"layout":"month_view"});
   </script>
   <!-- Cal inline embed code ends -->
-<!-- 
-            <div class="embed-placeholder">
-              <div>
-                <h3>Paste Your Cal.com Embed Here</h3>
-                <p class="text-muted mb-0">Replace this placeholder with your Cal.com inline embed code.</p>
-                <code>&lt;!-- Paste Cal.com inline embed code here --&gt;</code>
-              </div>
-            </div>
-
-            <div class="text-center mt-4">
-              <a class="btn-facebook" href="YOUR_CAL_LINK_HERE" target="_blank" rel="noopener">Open Calendar In New Tab</a>
-              <p class="text-muted mt-3 mb-0">Use this button as a backup in case the embedded calendar does not load on someone’s device.</p>
-            </div> -->
 
 <div class="warning mt-4">
   <strong>Can't find a suitable day or time?</strong><br><br>
-  Don't worry. If none of the available slots work for you, just drop me a message on Facebook and we'll arrange something that suits us both.
-  <br><br>
-  <a href="https://facebook.com/YOURPAGE"
-     class="btn-facebook"
-     target="_blank"
-     rel="noopener">
-     Message Me on Facebook
-  </a>
+  Don't worry. If none of the available slots work for you, reply to our existing Facebook conversation and we’ll arrange something that suits us both.
 </div>
 
 
@@ -255,17 +250,18 @@ Cal.config.forwardQueryParams = true;
       <div class="col-lg-4">
         <div class="side-card">
           <h3 style="font-weight:900;letter-spacing:-.04em;">Before The Call</h3>
-          <p>I’ll review your questionnaire before we speak so we can use the time properly.</p>
+          <p>I’ll review your answers before we speak so we can get straight to the most useful part of the conversation.</p>
+          <p><strong style="color:#fff;">The call is completely free to book, with no obligation to continue afterwards.</strong></p>
           <ul>
             <li>Please choose a time you can properly attend.</li>
             <li>Have your current enquiry process in mind.</li>
             <li>Think about where jobs, quotes or follow-ups tend to go quiet.</li>
-            <li>Bring any questions about Starter, Standard or Elite.</li>
+            <li>Bring any questions about the system, pricing or how the build would work.</li>
           </ul>
 
           <div class="green-box mt-4">
-            <strong>Your Deposit Is Protected</strong><br>
-            Your £497 deposit is deducted from whichever package you choose.
+            <strong>If We Decide To Work Together</strong><br>
+            Only if we both decide to go ahead, the next step is a £497 holding deposit. It secures your place in the build queue and is deducted from the cost of your chosen package. There is nothing to pay before or during this call.
           </div>
 
           <div class="warning mt-4">
@@ -283,7 +279,7 @@ Cal.config.forwardQueryParams = true;
     <div class="confirmation-card">
       <div class="confirmation-head">
         <h2>You’re All Booked In</h2>
-        <p>Your Strategy &amp; Build Planning Call has been reserved.</p>
+        <p>Your strategy call has been booked.</p>
       </div>
 
       <div class="confirmation-body">
@@ -299,21 +295,12 @@ Cal.config.forwardQueryParams = true;
 
         <div class="green-box mt-4 text-start">
           <strong>Before the call</strong><br>
-          Have a think about how enquiries currently come into your business,
-          where quotes tend to go quiet, and what you would most like the new
-          system to improve.
+          Have a think about how enquiries currently come into your business, where quotes tend to go quiet, and what you would most like a new system to improve.
         </div>
 
         <div class="warning mt-4 text-start">
           <strong>Need to change anything?</strong><br>
-          If you need to rearrange, just drop me a message on Facebook and we’ll sort it out.
-          <br><br>
-          <a href="https://facebook.com/YOURPAGE"
-             class="btn-facebook"
-             target="_blank"
-             rel="noopener">
-            Message Me on Facebook
-          </a>
+          If you need to rearrange, reply to our existing Facebook conversation and we’ll sort it out.
         </div>
       </div>
     </div>
