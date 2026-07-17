@@ -81,6 +81,35 @@
     footer strong{color:white}
     @media(max-width:767px){.option-grid{grid-template-columns:1fr}.wizard-body,.wizard-top{padding:24px}.wizard-nav{flex-direction:column-reverse}.btn-main,.btn-back{width:100%;text-align:center}.hero{padding-top:112px}section{padding:58px 0}}
   </style>
+
+<style id="hero-heading-typography-fix">
+.hero{
+  overflow:visible !important;
+}
+.hero h1{
+  line-height:.98 !important;
+  padding-right:18px;
+  padding-bottom:.08em;
+  overflow:visible !important;
+}
+.hero h1 .highlight{
+  display:inline-block;
+  margin-top:.08em;
+  padding-right:.08em;
+  padding-bottom:.10em;
+  overflow:visible;
+}
+@media(max-width:575px){
+  .hero h1{
+    line-height:1 !important;
+    padding-right:10px;
+    padding-bottom:.10em;
+  }
+  .hero h1 .highlight{
+    padding-bottom:.12em;
+  }
+}
+</style>
 </head>
 <body>
 
