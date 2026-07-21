@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <title>Lead Control Panel</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <style>
 :root{--bg:#0b1220;--panel:#111a2b;--panel2:#172238;--panel3:#202d45;--text:#f8fafc;--muted:#94a3b8;--line:rgba(255,255,255,.10);--orange:#ff7417;--green:#22c55e;--gold:#f59e0b;--red:#ef4444;--blue:#3b82f6;--shadow:0 24px 80px rgba(0,0,0,.38)}
 *{box-sizing:border-box}body{margin:0;min-height:100vh;padding:24px 14px;background:radial-gradient(circle at 10% 0,rgba(249,115,22,.15),transparent 28%),radial-gradient(circle at 95% 100%,rgba(59,130,246,.12),transparent 26%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
@@ -20,6 +21,16 @@
 .outcomes{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.outcome{height:auto;min-height:54px;padding:10px;background:#263247;color:#fff;border:1px solid var(--line)}.outcome.thinking{background:#3b2f16}.outcome.follow{background:#17365e}.outcome.lost{background:#4b1d1d}.outcome.client{background:#166534}
 .save-row{display:grid;grid-template-columns:1fr auto;gap:12px;margin-top:16px}.save{min-width:220px}.foot{text-align:center;color:#64748b;font-size:12px;margin-top:14px}
 @media(max-width:880px){.cards{grid-template-columns:1fr 1fr}.package-buttons{grid-template-columns:1fr 1fr}.outcomes{grid-template-columns:1fr 1fr}.journey{grid-template-columns:repeat(8,120px)}}@media(max-width:700px){.search{grid-template-columns:1fr}.grid,.save-row{grid-template-columns:1fr}.cards,.metrics{grid-template-columns:1fr 1fr}.save{width:100%}.identity{display:block}.stage-pill{display:inline-block;margin-top:12px}}@media(max-width:470px){.hero,.search,.content{padding-left:20px;padding-right:20px}.cards,.metrics,.package-buttons,.outcomes{grid-template-columns:1fr}.top{align-items:flex-start}.badge{display:none}}
+
+.flatpickr-calendar{background:#172238;border:1px solid rgba(255,255,255,.12);box-shadow:0 20px 60px rgba(0,0,0,.45)}
+.flatpickr-months .flatpickr-month,.flatpickr-current-month .flatpickr-monthDropdown-months,.flatpickr-weekdays,.flatpickr-weekday{background:#172238;color:#f8fafc}
+.flatpickr-day{color:#cbd5e1;border-radius:9px}
+.flatpickr-day:hover,.flatpickr-day:focus{background:#202d45;border-color:#202d45}
+.flatpickr-day.today{border-color:#ff7417}
+.flatpickr-day.selected,.flatpickr-day.startRange,.flatpickr-day.endRange{background:#ff7417;border-color:#ff7417;color:#111827}
+.flatpickr-day.prevMonthDay,.flatpickr-day.nextMonthDay{color:#64748b}
+.flatpickr-current-month input.cur-year,.flatpickr-current-month .numInputWrapper span.arrowUp:after{color:#f8fafc}
+
 </style>
 </head>
 <body>
@@ -81,7 +92,7 @@
 <label for="outcome">Call outcome</label>
 <select id="outcome"><option value="">Not set</option><option>Call Completed</option><option>Thinking</option><option>Payment Link Sent</option><option>Won</option><option>Follow Up Later</option><option>Not Proceeding</option></select>
 <div style="height:14px"></div>
-<label for="followUpDate">Follow-up date</label><input id="followUpDate" type="date">
+<label for="followUpDate">Follow-up date</label><input id="followUpDate" type="text" placeholder="Select a follow-up date" autocomplete="off">
 <div style="height:14px"></div>
 <label for="stage">Lead stage</label>
 <select id="stage"><option>Concept Lead</option><option>Calculator Started</option><option>Calculator Completed</option><option>Strategy Call Booked</option><option>Questionnaire Completed</option><option>Call Completed</option><option>Payment Link Sent</option><option>Follow Up Later</option><option>Not Proceeding</option><option>Client</option></select>
@@ -108,11 +119,19 @@
 <div class="foot">No MailerLite API credentials are stored in this page.</div>
 </main>
 
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
 const WORKER="https://trade-concept-leads.pbwebonlinesales.workers.dev";
 const STAGES=["Concept Lead","Calculator Started","Calculator Completed","Strategy Call Booked","Questionnaire Completed","Call Completed","Payment Link Sent","Follow Up Later","Not Proceeding","Client"];
 const $=id=>document.getElementById(id);
 const email=$("email"),adminKey=$("adminKey"),status=$("status"),content=$("content"),empty=$("empty"),stage=$("stage"),pkg=$("package"),outcome=$("outcome"),notes=$("notes"),followUpDate=$("followUpDate");
+const followUpPicker=flatpickr(followUpDate,{
+  dateFormat:"Y-m-d",
+  altInput:true,
+  altFormat:"d/m/Y",
+  allowInput:false,
+  disableMobile:true
+});
 const urlEmail=new URLSearchParams(location.search).get("email");if(urlEmail)email.value=urlEmail;
 
 function message(text,type){status.textContent=text;status.className="status show "+type}
@@ -128,7 +147,7 @@ if(!email.checkValidity()){email.reportValidity();return}if(!adminKey.value.trim
 busy(true);message("Loading lead…","ok");
 try{const {lead}=await request("/get-lead",{email:email.value.trim(),admin_key:adminKey.value.trim()});
 $("businessName").textContent=lead.business_name||lead.name||lead.email;$("identityLine").textContent=[lead.name,lead.trade,lead.email].filter(Boolean).join(" · ");$("currentStage").textContent=lead.lead_stage||"No stage";$("callTime").textContent=lead.strategy_call_time||"—";$("opportunity").textContent=money(lead.estimated_yearly_opportunity);$("recommended").textContent=lead.recommended_package||"—";$("source").textContent=lead.lead_source||"—";$("jobValue").textContent=money(lead.average_job_value);$("extraJobs").textContent=lead.extra_jobs_per_week||"—";$("yearlyValue").textContent=money(lead.estimated_yearly_opportunity);
-if(lead.lead_stage)stage.value=lead.lead_stage;selectPackage(lead.selected_package||"");outcome.value=lead.call_outcome||"";notes.value=lead.sales_notes||"";followUpDate.value=lead.follow_up_date||"";renderJourney(lead.lead_stage||"");
+if(lead.lead_stage)stage.value=lead.lead_stage;selectPackage(lead.selected_package||"");outcome.value=lead.call_outcome||"";notes.value=lead.sales_notes||"";followUpPicker.setDate(lead.follow_up_date||"",false,"Y-m-d");renderJourney(lead.lead_stage||"");
 content.classList.add("show");empty.style.display="none";message("Lead loaded successfully.","ok")
 }catch(err){content.classList.remove("show");empty.style.display="block";message(err.message,"bad")}finally{busy(false)}
 }
