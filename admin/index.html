@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Lead Control Panel</title>
+<style>
+:root{--bg:#0b1220;--panel:#111a2b;--panel2:#172238;--panel3:#202d45;--text:#f8fafc;--muted:#94a3b8;--line:rgba(255,255,255,.10);--orange:#ff7417;--green:#22c55e;--gold:#f59e0b;--red:#ef4444;--blue:#3b82f6;--shadow:0 24px 80px rgba(0,0,0,.38)}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;padding:24px 14px;background:radial-gradient(circle at 10% 0,rgba(249,115,22,.15),transparent 28%),radial-gradient(circle at 95% 100%,rgba(59,130,246,.12),transparent 26%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.wrap{width:min(1040px,100%);margin:auto}.top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:18px}.brand{display:flex;align-items:center;gap:12px}.logo{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#fb923c,#f97316);display:grid;place-items:center;color:#111827;font-weight:900}.brand strong{display:block}.brand span{display:block;color:var(--muted);font-size:13px;margin-top:2px}.badge{font-size:12px;color:#cbd5e1;border:1px solid var(--line);padding:8px 11px;border-radius:999px;background:rgba(255,255,255,.03)}
+.panel{background:linear-gradient(180deg,rgba(255,255,255,.025),transparent),var(--panel);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);overflow:hidden}.hero{padding:28px 30px 22px;border-bottom:1px solid var(--line)}.eyebrow{color:#fdba74;font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}h1{margin:0;font-size:clamp(30px,5vw,46px);letter-spacing:-.04em;line-height:1.02}.hero p{max-width:720px;color:var(--muted);line-height:1.6;margin:12px 0 0}
+.search{padding:24px 30px;display:grid;grid-template-columns:1.4fr 1fr auto;gap:12px;border-bottom:1px solid var(--line)}label{display:block;color:#cbd5e1;font-size:12px;font-weight:800;margin-bottom:7px}input,select,textarea{width:100%;border:1px solid var(--line);border-radius:12px;padding:0 14px;background:var(--panel2);color:var(--text);font:inherit;outline:none}input,select{height:48px}textarea{min-height:132px;padding-top:13px;resize:vertical;line-height:1.55}input:focus,select:focus,textarea:focus{border-color:rgba(249,115,22,.75);box-shadow:0 0 0 4px rgba(249,115,22,.11)}button{border:0;border-radius:12px;padding:0 18px;height:48px;font:inherit;font-weight:900;cursor:pointer;transition:.15s transform,.15s opacity,.15s background}button:hover{transform:translateY(-1px)}button:disabled{opacity:.55;cursor:not-allowed;transform:none}.load,.save{background:var(--orange);color:#111827}.load{align-self:end}
+.status{display:none;margin:18px 30px 0;padding:13px 15px;border-radius:12px;font-size:14px;line-height:1.45}.status.show{display:block}.status.ok{background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.3);color:#dcfce7}.status.bad{background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.3);color:#fee2e2}.empty{padding:34px 30px;text-align:center;color:var(--muted)}
+.content{display:none;padding:26px 30px 32px}.content.show{display:block}.identity{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:20px}.identity h2{font-size:27px;margin:0 0 5px}.identity p{margin:0;color:var(--muted)}.stage-pill{padding:9px 12px;border-radius:999px;background:rgba(249,115,22,.13);border:1px solid rgba(249,115,22,.25);color:#fdba74;font-size:12px;font-weight:900;white-space:nowrap}
+.section{border-top:1px solid var(--line);padding-top:22px;margin-top:22px}.section h3{margin:0 0 6px;font-size:18px}.section-copy{margin:0 0 17px;color:var(--muted);font-size:14px}
+.journey{display:grid;grid-template-columns:repeat(8,minmax(80px,1fr));gap:8px;overflow-x:auto;padding-bottom:4px}.step{position:relative;min-width:92px;padding:12px 9px;border:1px solid var(--line);border-radius:12px;background:var(--panel2);color:#718096;text-align:center;font-size:11px;font-weight:850;line-height:1.3}.step.done{background:rgba(34,197,94,.10);border-color:rgba(34,197,94,.28);color:#bbf7d0}.step.current{background:rgba(249,115,22,.15);border-color:rgba(249,115,22,.52);color:#fed7aa;box-shadow:0 0 0 3px rgba(249,115,22,.08)}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.card{background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:15px}.card span{display:block;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:800;margin-bottom:7px}.card strong{display:block;font-size:15px;line-height:1.35;overflow-wrap:anywhere}.metrics{grid-template-columns:repeat(3,1fr)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.package-buttons{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.package-btn{height:auto;min-height:58px;padding:12px;background:var(--panel3);color:#fff;border:1px solid var(--line);line-height:1.25}.package-btn.active{background:rgba(249,115,22,.18);border-color:rgba(249,115,22,.7);color:#fed7aa;box-shadow:0 0 0 3px rgba(249,115,22,.08)}
+.outcomes{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.outcome{height:auto;min-height:54px;padding:10px;background:#263247;color:#fff;border:1px solid var(--line)}.outcome.thinking{background:#3b2f16}.outcome.follow{background:#17365e}.outcome.lost{background:#4b1d1d}.outcome.client{background:#166534}
+.save-row{display:grid;grid-template-columns:1fr auto;gap:12px;margin-top:16px}.save{min-width:220px}.foot{text-align:center;color:#64748b;font-size:12px;margin-top:14px}
+@media(max-width:880px){.cards{grid-template-columns:1fr 1fr}.package-buttons{grid-template-columns:1fr 1fr}.outcomes{grid-template-columns:1fr 1fr}.journey{grid-template-columns:repeat(8,120px)}}@media(max-width:700px){.search{grid-template-columns:1fr}.grid,.save-row{grid-template-columns:1fr}.cards,.metrics{grid-template-columns:1fr 1fr}.save{width:100%}.identity{display:block}.stage-pill{display:inline-block;margin-top:12px}}@media(max-width:470px){.hero,.search,.content{padding-left:20px;padding-right:20px}.cards,.metrics,.package-buttons,.outcomes{grid-template-columns:1fr}.top{align-items:flex-start}.badge{display:none}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<div class="top"><div class="brand"><div class="logo">PB</div><div><strong>Lead Control Panel</strong><span>Private MailerLite shortcut</span></div></div><div class="badge">Admin only</div></div>
+<section class="panel">
+<header class="hero"><div class="eyebrow">Lightweight CRM</div><h1>Everything you need before and after the call.</h1><p>Load the lead, review their numbers and journey, record your notes, choose the package and update the outcome without opening MailerLite.</p></header>
+<div id="status" class="status" role="status" aria-live="polite"></div>
+<section class="search">
+<div><label for="email">Prospect email</label><input id="email" type="email" placeholder="prospect@example.com"></div>
+<div><label for="adminKey">Private admin key</label><input id="adminKey" type="password" placeholder="Enter admin key"></div>
+<button id="loadBtn" class="load">Load lead</button>
+</section>
+<div id="empty" class="empty">Enter the prospect’s email and your admin key to load their record.</div>
+
+<section id="content" class="content">
+<div class="identity"><div><h2 id="businessName">Lead</h2><p id="identityLine"></p></div><div id="currentStage" class="stage-pill">No stage</div></div>
+
+<div class="section" style="border-top:0;padding-top:0;margin-top:0">
+<h3>Lead journey</h3><p class="section-copy">The current stage is highlighted. Completed stages are shown in green.</p>
+<div id="journey" class="journey"></div>
+</div>
+
+<div class="section">
+<h3>Call snapshot</h3>
+<div class="cards">
+<div class="card"><span>Strategy call</span><strong id="callTime">—</strong></div>
+<div class="card"><span>Yearly opportunity</span><strong id="opportunity">—</strong></div>
+<div class="card"><span>Recommended</span><strong id="recommended">—</strong></div>
+<div class="card"><span>Lead source</span><strong id="source">—</strong></div>
+</div>
+</div>
+
+<div class="section">
+<h3>Calculator answers</h3>
+<div class="cards metrics">
+<div class="card"><span>Average job value</span><strong id="jobValue">—</strong></div>
+<div class="card"><span>Extra jobs per week</span><strong id="extraJobs">—</strong></div>
+<div class="card"><span>Estimated yearly opportunity</span><strong id="yearlyValue">—</strong></div>
+</div>
+</div>
+
+<div class="section">
+<h3>Choose the package</h3><p class="section-copy">Tap a package to select it. It will be saved with the next update.</p>
+<div class="package-buttons">
+<button class="package-btn" data-package="Professional Website">Professional Website</button>
+<button class="package-btn" data-package="Email Recovery System">Email Recovery System</button>
+<button class="package-btn" data-package="Client Capture System Lite">Client Capture System Lite</button>
+<button class="package-btn" data-package="Client Capture System Enterprise">Client Capture System Enterprise</button>
+</div>
+<input id="package" type="hidden">
+</div>
+
+<div class="section">
+<h3>Call notes and follow-up</h3>
+<div class="grid">
+<div><label for="notes">Notes</label><textarea id="notes" placeholder="What did they say? What matters? What happens next?"></textarea></div>
+<div>
+<label for="outcome">Call outcome</label>
+<select id="outcome"><option value="">Not set</option><option>Call Completed</option><option>Thinking</option><option>Payment Link Sent</option><option>Won</option><option>Follow Up Later</option><option>Not Proceeding</option></select>
+<div style="height:14px"></div>
+<label for="followUpDate">Follow-up date</label><input id="followUpDate" type="date">
+<div style="height:14px"></div>
+<label for="stage">Lead stage</label>
+<select id="stage"><option>Concept Lead</option><option>Calculator Started</option><option>Calculator Completed</option><option>Strategy Call Booked</option><option>Questionnaire Completed</option><option>Call Completed</option><option>Payment Link Sent</option><option>Follow Up Later</option><option>Not Proceeding</option><option>Client</option></select>
+</div>
+</div>
+</div>
+
+<div class="section">
+<h3>Quick outcomes</h3><p class="section-copy">These buttons set the matching stage and save immediately.</p>
+<div class="outcomes">
+<button class="outcome" data-quick="Call Completed|Call Completed">Call completed</button>
+<button class="outcome thinking" data-quick="Follow Up Later|Thinking">Thinking</button>
+<button class="outcome follow" data-quick="Payment Link Sent|Payment Link Sent">Payment link sent</button>
+<button class="outcome client" data-quick="Client|Won">Client</button>
+<button class="outcome lost" data-quick="Not Proceeding|Not Proceeding">Not proceeding</button>
+</div>
+</div>
+
+<div class="save-row">
+<div></div><button id="saveBtn" class="save">Save all changes</button>
+</div>
+</section>
+</section>
+<div class="foot">No MailerLite API credentials are stored in this page.</div>
+</main>
+
+<script>
+const WORKER="https://trade-concept-leads.pbwebonlinesales.workers.dev";
+const STAGES=["Concept Lead","Calculator Started","Calculator Completed","Strategy Call Booked","Questionnaire Completed","Call Completed","Payment Link Sent","Follow Up Later","Not Proceeding","Client"];
+const $=id=>document.getElementById(id);
+const email=$("email"),adminKey=$("adminKey"),status=$("status"),content=$("content"),empty=$("empty"),stage=$("stage"),pkg=$("package"),outcome=$("outcome"),notes=$("notes"),followUpDate=$("followUpDate");
+const urlEmail=new URLSearchParams(location.search).get("email");if(urlEmail)email.value=urlEmail;
+
+function message(text,type){status.textContent=text;status.className="status show "+type}
+function busy(on){document.querySelectorAll("button").forEach(b=>b.disabled=on)}
+function money(v){const n=Number(v);return v&&Number.isFinite(n)?new Intl.NumberFormat("en-GB",{style:"currency",currency:"GBP",maximumFractionDigits:0}).format(n):"—"}
+async function request(path,payload){const res=await fetch(WORKER+path,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});let data={};try{data=await res.json()}catch{}if(!res.ok||!data.success)throw new Error(data.error||`Worker returned ${res.status}`);return data}
+function renderJourney(current){const i=STAGES.indexOf(current);$("journey").innerHTML=STAGES.slice(0,8).map((s,x)=>`<div class="step ${x<i?"done":x===i?"current":""}">${s}</div>`).join("")}
+function selectPackage(value){pkg.value=value;document.querySelectorAll("[data-package]").forEach(b=>b.classList.toggle("active",b.dataset.package===value))}
+function payload(chosenStage=stage.value){return{email:email.value.trim(),admin_key:adminKey.value.trim(),lead_stage:chosenStage,selected_package:pkg.value,call_outcome:outcome.value,sales_notes:notes.value.trim(),follow_up_date:followUpDate.value}}
+
+async function loadLead(){
+if(!email.checkValidity()){email.reportValidity();return}if(!adminKey.value.trim()){message("Enter your private admin key.","bad");return}
+busy(true);message("Loading lead…","ok");
+try{const {lead}=await request("/get-lead",{email:email.value.trim(),admin_key:adminKey.value.trim()});
+$("businessName").textContent=lead.business_name||lead.name||lead.email;$("identityLine").textContent=[lead.name,lead.trade,lead.email].filter(Boolean).join(" · ");$("currentStage").textContent=lead.lead_stage||"No stage";$("callTime").textContent=lead.strategy_call_time||"—";$("opportunity").textContent=money(lead.estimated_yearly_opportunity);$("recommended").textContent=lead.recommended_package||"—";$("source").textContent=lead.lead_source||"—";$("jobValue").textContent=money(lead.average_job_value);$("extraJobs").textContent=lead.extra_jobs_per_week||"—";$("yearlyValue").textContent=money(lead.estimated_yearly_opportunity);
+if(lead.lead_stage)stage.value=lead.lead_stage;selectPackage(lead.selected_package||"");outcome.value=lead.call_outcome||"";notes.value=lead.sales_notes||"";followUpDate.value=lead.follow_up_date||"";renderJourney(lead.lead_stage||"");
+content.classList.add("show");empty.style.display="none";message("Lead loaded successfully.","ok")
+}catch(err){content.classList.remove("show");empty.style.display="block";message(err.message,"bad")}finally{busy(false)}
+}
+async function saveLead(chosenStage=stage.value,chosenOutcome=outcome.value){
+stage.value=chosenStage;outcome.value=chosenOutcome;busy(true);message(`Saving “${chosenStage}”…`,"ok");
+try{await request("/update-lead-stage",payload(chosenStage));$("currentStage").textContent=chosenStage;renderJourney(chosenStage);message(`Saved — lead is now “${chosenStage}”.`,"ok")}catch(err){message(err.message,"bad")}finally{busy(false)}
+}
+$("loadBtn").addEventListener("click",loadLead);$("saveBtn").addEventListener("click",()=>saveLead());
+document.querySelectorAll("[data-package]").forEach(b=>b.addEventListener("click",()=>selectPackage(b.dataset.package)));
+document.querySelectorAll("[data-quick]").forEach(b=>b.addEventListener("click",()=>{const [s,o]=b.dataset.quick.split("|");saveLead(s,o)}));
+[email,adminKey].forEach(el=>el.addEventListener("keydown",e=>{if(e.key==="Enter")loadLead()}));
+</script>
+</body>
+</html>
