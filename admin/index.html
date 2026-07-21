@@ -6,159 +6,550 @@
 <meta name="robots" content="noindex,nofollow">
 <title>Lead Control Panel</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
 <style>
-:root{--bg:#0b1220;--panel:#111a2b;--panel2:#172238;--panel3:#202d45;--text:#f8fafc;--muted:#94a3b8;--line:rgba(255,255,255,.10);--orange:#ff7417;--green:#22c55e;--gold:#f59e0b;--red:#ef4444;--blue:#3b82f6;--shadow:0 24px 80px rgba(0,0,0,.38)}
-*{box-sizing:border-box}body{margin:0;min-height:100vh;padding:24px 14px;background:radial-gradient(circle at 10% 0,rgba(249,115,22,.15),transparent 28%),radial-gradient(circle at 95% 100%,rgba(59,130,246,.12),transparent 26%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-.wrap{width:min(1040px,100%);margin:auto}.top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:18px}.brand{display:flex;align-items:center;gap:12px}.logo{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#fb923c,#f97316);display:grid;place-items:center;color:#111827;font-weight:900}.brand strong{display:block}.brand span{display:block;color:var(--muted);font-size:13px;margin-top:2px}.badge{font-size:12px;color:#cbd5e1;border:1px solid var(--line);padding:8px 11px;border-radius:999px;background:rgba(255,255,255,.03)}
-.panel{background:linear-gradient(180deg,rgba(255,255,255,.025),transparent),var(--panel);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);overflow:hidden}.hero{padding:28px 30px 22px;border-bottom:1px solid var(--line)}.eyebrow{color:#fdba74;font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}h1{margin:0;font-size:clamp(30px,5vw,46px);letter-spacing:-.04em;line-height:1.02}.hero p{max-width:720px;color:var(--muted);line-height:1.6;margin:12px 0 0}
-.search{padding:24px 30px;display:grid;grid-template-columns:1.4fr 1fr auto;gap:12px;border-bottom:1px solid var(--line)}label{display:block;color:#cbd5e1;font-size:12px;font-weight:800;margin-bottom:7px}input,select,textarea{width:100%;border:1px solid var(--line);border-radius:12px;padding:0 14px;background:var(--panel2);color:var(--text);font:inherit;outline:none}input,select{height:48px}textarea{min-height:132px;padding-top:13px;resize:vertical;line-height:1.55}input:focus,select:focus,textarea:focus{border-color:rgba(249,115,22,.75);box-shadow:0 0 0 4px rgba(249,115,22,.11)}button{border:0;border-radius:12px;padding:0 18px;height:48px;font:inherit;font-weight:900;cursor:pointer;transition:.15s transform,.15s opacity,.15s background}button:hover{transform:translateY(-1px)}button:disabled{opacity:.55;cursor:not-allowed;transform:none}.load,.save{background:var(--orange);color:#111827}.load{align-self:end}
-.status{display:none;margin:18px 30px 0;padding:13px 15px;border-radius:12px;font-size:14px;line-height:1.45}.status.show{display:block}.status.ok{background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.3);color:#dcfce7}.status.bad{background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.3);color:#fee2e2}.empty{padding:34px 30px;text-align:center;color:var(--muted)}
-.content{display:none;padding:26px 30px 32px}.content.show{display:block}.identity{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:20px}.identity h2{font-size:27px;margin:0 0 5px}.identity p{margin:0;color:var(--muted)}.stage-pill{padding:9px 12px;border-radius:999px;background:rgba(249,115,22,.13);border:1px solid rgba(249,115,22,.25);color:#fdba74;font-size:12px;font-weight:900;white-space:nowrap}
-.section{border-top:1px solid var(--line);padding-top:22px;margin-top:22px}.section h3{margin:0 0 6px;font-size:18px}.section-copy{margin:0 0 17px;color:var(--muted);font-size:14px}
-.journey{display:grid;grid-template-columns:repeat(8,minmax(80px,1fr));gap:8px;overflow-x:auto;padding-bottom:4px}.step{position:relative;min-width:92px;padding:12px 9px;border:1px solid var(--line);border-radius:12px;background:var(--panel2);color:#718096;text-align:center;font-size:11px;font-weight:850;line-height:1.3}.step.done{background:rgba(34,197,94,.10);border-color:rgba(34,197,94,.28);color:#bbf7d0}.step.current{background:rgba(249,115,22,.15);border-color:rgba(249,115,22,.52);color:#fed7aa;box-shadow:0 0 0 3px rgba(249,115,22,.08)}
-.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.card{background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:15px}.card span{display:block;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em;font-weight:800;margin-bottom:7px}.card strong{display:block;font-size:15px;line-height:1.35;overflow-wrap:anywhere}.metrics{grid-template-columns:repeat(3,1fr)}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.package-buttons{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.package-btn{height:auto;min-height:58px;padding:12px;background:var(--panel3);color:#fff;border:1px solid var(--line);line-height:1.25}.package-btn.active{background:rgba(249,115,22,.18);border-color:rgba(249,115,22,.7);color:#fed7aa;box-shadow:0 0 0 3px rgba(249,115,22,.08)}
-.outcomes{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.outcome{height:auto;min-height:54px;padding:10px;background:#263247;color:#fff;border:1px solid var(--line)}.outcome.thinking{background:#3b2f16}.outcome.follow{background:#17365e}.outcome.lost{background:#4b1d1d}.outcome.client{background:#166534}
-.save-row{display:grid;grid-template-columns:1fr auto;gap:12px;margin-top:16px}.save{min-width:220px}.foot{text-align:center;color:#64748b;font-size:12px;margin-top:14px}
-@media(max-width:880px){.cards{grid-template-columns:1fr 1fr}.package-buttons{grid-template-columns:1fr 1fr}.outcomes{grid-template-columns:1fr 1fr}.journey{grid-template-columns:repeat(8,120px)}}@media(max-width:700px){.search{grid-template-columns:1fr}.grid,.save-row{grid-template-columns:1fr}.cards,.metrics{grid-template-columns:1fr 1fr}.save{width:100%}.identity{display:block}.stage-pill{display:inline-block;margin-top:12px}}@media(max-width:470px){.hero,.search,.content{padding-left:20px;padding-right:20px}.cards,.metrics,.package-buttons,.outcomes{grid-template-columns:1fr}.top{align-items:flex-start}.badge{display:none}}
+:root{
+  --bg:#f4f5f7;
+  --surface:#ffffff;
+  --surface-subtle:#fafbfc;
+  --surface-muted:#f1f2f4;
+  --text:#172b4d;
+  --text-soft:#44546f;
+  --muted:#6b778c;
+  --border:#dfe1e6;
+  --border-strong:#c1c7d0;
+  --blue:#0c66e4;
+  --blue-hover:#0055cc;
+  --blue-soft:#e9f2ff;
+  --green:#1f845a;
+  --green-soft:#dcfff1;
+  --yellow:#946f00;
+  --yellow-soft:#fff7d6;
+  --red:#c9372c;
+  --red-soft:#ffeceb;
+  --shadow:0 1px 2px rgba(9,30,66,.08),0 0 1px rgba(9,30,66,.12);
+  --radius:4px;
+}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{
+  margin:0;
+  min-height:100vh;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:14px;
+}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.hidden{display:none!important}
+.wrap{width:100%;min-height:100vh}
 
-.flatpickr-calendar{background:#172238;border:1px solid rgba(255,255,255,.12);box-shadow:0 20px 60px rgba(0,0,0,.45)}
-.flatpickr-months .flatpickr-month,.flatpickr-current-month .flatpickr-monthDropdown-months,.flatpickr-weekdays,.flatpickr-weekday{background:#172238;color:#f8fafc}
-.flatpickr-day{color:#cbd5e1;border-radius:9px}
-.flatpickr-day:hover,.flatpickr-day:focus{background:#202d45;border-color:#202d45}
-.flatpickr-day.today{border-color:#ff7417}
-.flatpickr-day.selected,.flatpickr-day.startRange,.flatpickr-day.endRange{background:#ff7417;border-color:#ff7417;color:#111827}
-.flatpickr-day.prevMonthDay,.flatpickr-day.nextMonthDay{color:#64748b}
-.flatpickr-current-month input.cur-year,.flatpickr-current-month .numInputWrapper span.arrowUp:after{color:#f8fafc}
+.top{
+  height:56px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:0 20px;
+  background:var(--surface);
+  border-bottom:1px solid var(--border);
+  position:sticky;
+  top:0;
+  z-index:50;
+}
+.brand{display:flex;align-items:center;gap:10px}
+.logo{
+  width:30px;
+  height:30px;
+  border-radius:4px;
+  background:var(--blue);
+  color:#fff;
+  display:grid;
+  place-items:center;
+  font-size:12px;
+  font-weight:800;
+}
+.brand strong{display:block;font-size:14px;line-height:1.1}
+.brand span{display:block;color:var(--muted);font-size:11px;margin-top:2px}
+.top-actions{display:flex;gap:8px;align-items:center}
+.badge{
+  color:var(--text-soft);
+  border:1px solid var(--border);
+  padding:5px 8px;
+  border-radius:3px;
+  background:var(--surface-subtle);
+  font-size:11px;
+  font-weight:600;
+}
+.ghost{
+  height:32px;
+  padding:0 10px;
+  border:1px solid var(--border);
+  border-radius:3px;
+  background:var(--surface);
+  color:var(--text);
+  font-weight:600;
+}
+.ghost:hover{background:var(--surface-muted)}
 
+.panel{
+  width:min(1400px,calc(100% - 32px));
+  margin:20px auto;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:6px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.hero{
+  padding:20px 24px 18px;
+  background:var(--surface);
+  border-bottom:1px solid var(--border);
+}
+.eyebrow{
+  color:var(--blue);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  margin-bottom:6px;
+}
+h1{
+  margin:0;
+  color:var(--text);
+  font-size:28px;
+  font-weight:650;
+  letter-spacing:-.02em;
+  line-height:1.2;
+}
+.hero p{
+  max-width:780px;
+  color:var(--text-soft);
+  line-height:1.5;
+  margin:8px 0 0;
+}
+
+.status{
+  display:none;
+  margin:14px 24px 0;
+  padding:10px 12px;
+  border-radius:3px;
+  font-size:13px;
+  line-height:1.4;
+}
+.status.show{display:block}
+.status.ok{
+  background:var(--green-soft);
+  border:1px solid #7ee2b8;
+  color:#164b35;
+}
+.status.bad{
+  background:var(--red-soft);
+  border:1px solid #fd9891;
+  color:#5d1f1a;
+}
+
+label{
+  display:block;
+  color:var(--text-soft);
+  font-size:12px;
+  font-weight:600;
+  margin-bottom:6px;
+}
+input,select,textarea{
+  width:100%;
+  border:1px solid var(--border-strong);
+  border-radius:3px;
+  background:var(--surface);
+  color:var(--text);
+  outline:none;
+}
+input,select{height:36px;padding:0 10px}
+textarea{min-height:118px;padding:9px 10px;resize:vertical;line-height:1.45}
+input:focus,select:focus,textarea:focus{
+  border-color:var(--blue);
+  box-shadow:0 0 0 1px var(--blue);
+}
+
+button{
+  border:0;
+  border-radius:3px;
+  padding:0 12px;
+  height:36px;
+  font-weight:600;
+  transition:background .12s,border-color .12s;
+}
+button:hover{transform:none}
+button:disabled{opacity:.55;cursor:not-allowed}
+.primary{background:var(--blue);color:#fff}
+.primary:hover{background:var(--blue-hover)}
+
+.login-shell{
+  min-height:calc(100vh - 56px);
+  display:grid;
+  place-items:center;
+  padding:24px;
+}
+.login-card{
+  width:min(420px,100%);
+  padding:28px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:6px;
+  box-shadow:var(--shadow);
+}
+.login-card h1{font-size:26px}
+.login-card p{color:var(--text-soft);line-height:1.5}
+.login-card button{width:100%;margin-top:12px}
+.login-note{margin-top:12px;text-align:center;color:var(--muted);font-size:11px}
+
+.dashboard{padding:20px 24px 24px;background:var(--surface-subtle)}
+.dashboard-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:16px;
+  margin-bottom:14px;
+}
+.dashboard-head h2{margin:0 0 3px;font-size:20px;font-weight:650}
+.dashboard-head p{margin:0;color:var(--muted);font-size:12px}
+.refresh{
+  background:var(--surface);
+  color:var(--text);
+  border:1px solid var(--border-strong);
+}
+.refresh:hover{background:var(--surface-muted)}
+
+.summary{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-bottom:16px;
+}
+.summary-card{
+  padding:14px 16px;
+  border:1px solid var(--border);
+  border-radius:4px;
+  background:var(--surface);
+  box-shadow:0 1px 1px rgba(9,30,66,.04);
+}
+.summary-card span{
+  display:block;
+  color:var(--muted);
+  font-size:11px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+.summary-card strong{
+  display:block;
+  color:var(--text);
+  font-size:24px;
+  margin-top:5px;
+  font-weight:650;
+}
+
+.dashboard-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.list-panel{
+  border:1px solid var(--border);
+  border-radius:4px;
+  background:var(--surface);
+  overflow:hidden;
+}
+.list-panel.wide{grid-column:1/-1}
+.list-head{
+  padding:12px 14px;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:var(--surface-subtle);
+}
+.list-head h3{margin:0;font-size:14px;font-weight:650}
+.list-head span{color:var(--muted);font-size:11px}
+.lead-list{max-height:320px;overflow:auto}
+.lead-row{
+  width:100%;
+  height:auto;
+  min-height:58px;
+  text-align:left;
+  padding:10px 14px;
+  border-radius:0;
+  border-bottom:1px solid var(--border);
+  background:var(--surface);
+  color:var(--text);
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  align-items:center;
+}
+.lead-row:last-child{border-bottom:0}
+.lead-row:hover{background:#f7f8f9}
+.lead-main strong{display:block;font-size:13px;font-weight:650}
+.lead-main span,.lead-meta{display:block;color:var(--muted);font-size:11px;margin-top:3px}
+.lead-meta{text-align:right;margin:0}
+.empty-list{padding:20px 14px;color:var(--muted);font-size:12px}
+
+.search{
+  padding:16px 24px;
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:10px;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  background:var(--surface);
+}
+.search button{align-self:end}
+.empty{padding:24px;text-align:center;color:var(--muted);background:var(--surface)}
+
+.content{display:none;padding:20px 24px 28px;background:var(--surface)}
+.content.show{display:block}
+.identity{
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  align-items:flex-start;
+  margin-bottom:16px;
+}
+.identity h2{font-size:22px;margin:0 0 4px;font-weight:650}
+.identity p{margin:0;color:var(--muted);font-size:12px}
+.stage-pill{
+  padding:5px 8px;
+  border-radius:3px;
+  background:var(--blue-soft);
+  border:1px solid #85b8ff;
+  color:#0747a6;
+  font-size:11px;
+  font-weight:700;
+  white-space:nowrap;
+}
+
+.section{
+  border-top:1px solid var(--border);
+  padding-top:18px;
+  margin-top:18px;
+}
+.section h3{margin:0 0 4px;font-size:15px;font-weight:650}
+.section-copy{margin:0 0 12px;color:var(--muted);font-size:12px}
+
+.journey{
+  display:grid;
+  grid-template-columns:repeat(8,minmax(92px,1fr));
+  gap:6px;
+  overflow-x:auto;
+  padding-bottom:4px;
+}
+.step{
+  min-width:92px;
+  padding:9px 8px;
+  border:1px solid var(--border);
+  border-radius:3px;
+  background:var(--surface-subtle);
+  color:var(--muted);
+  text-align:center;
+  font-size:10px;
+  font-weight:700;
+  line-height:1.3;
+}
+.step.done{
+  background:var(--green-soft);
+  border-color:#7ee2b8;
+  color:#164b35;
+}
+.step.current{
+  background:var(--blue-soft);
+  border-color:#85b8ff;
+  color:#0747a6;
+}
+
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:4px;
+  padding:12px;
+}
+.card span{
+  display:block;
+  color:var(--muted);
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  font-weight:700;
+  margin-bottom:5px;
+}
+.card strong{display:block;font-size:13px;line-height:1.35;overflow-wrap:anywhere}
+.metrics{grid-template-columns:repeat(3,1fr)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.package-buttons{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.package-btn{
+  height:auto;
+  min-height:46px;
+  padding:9px 10px;
+  background:var(--surface);
+  color:var(--text);
+  border:1px solid var(--border-strong);
+  line-height:1.2;
+}
+.package-btn:hover{background:var(--surface-muted)}
+.package-btn.active{
+  background:var(--blue-soft);
+  border-color:var(--blue);
+  color:#0747a6;
+  box-shadow:inset 0 0 0 1px var(--blue);
+}
+
+.outcomes{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.outcome{
+  height:auto;
+  min-height:40px;
+  padding:8px;
+  background:var(--surface);
+  color:var(--text);
+  border:1px solid var(--border-strong);
+}
+.outcome:hover{background:var(--surface-muted)}
+.thinking{background:var(--yellow-soft);border-color:#f5cd47;color:#533f04}
+.follow{background:var(--blue-soft);border-color:#85b8ff;color:#0747a6}
+.lost{background:var(--red-soft);border-color:#fd9891;color:#5d1f1a}
+.client{background:var(--green-soft);border-color:#7ee2b8;color:#164b35}
+
+.save-row{display:grid;grid-template-columns:1fr auto;gap:10px;margin-top:14px}
+.save{min-width:180px}
+.foot{text-align:center;color:var(--muted);font-size:11px;padding:0 0 16px}
+
+.flatpickr-calendar{
+  background:var(--surface);
+  border:1px solid var(--border);
+  box-shadow:0 8px 24px rgba(9,30,66,.18);
+  border-radius:4px;
+}
+.flatpickr-months .flatpickr-month,
+.flatpickr-current-month .flatpickr-monthDropdown-months,
+.flatpickr-weekdays,
+.flatpickr-weekday{background:var(--surface);color:var(--text)}
+.flatpickr-day{color:var(--text);border-radius:3px}
+.flatpickr-day:hover,.flatpickr-day:focus{background:var(--surface-muted);border-color:var(--surface-muted)}
+.flatpickr-day.today{border-color:var(--blue)}
+.flatpickr-day.selected{background:var(--blue);border-color:var(--blue);color:#fff}
+.flatpickr-day.prevMonthDay,.flatpickr-day.nextMonthDay{color:var(--muted)}
+
+@media(max-width:900px){
+  .dashboard-grid{grid-template-columns:1fr}
+  .list-panel.wide{grid-column:auto}
+  .cards{grid-template-columns:1fr 1fr}
+  .package-buttons{grid-template-columns:1fr 1fr}
+  .outcomes{grid-template-columns:1fr 1fr}
+  .journey{grid-template-columns:repeat(8,120px)}
+}
+@media(max-width:700px){
+  .panel{width:calc(100% - 16px);margin:8px auto}
+  .dashboard,.hero,.search,.content{padding-left:16px;padding-right:16px}
+  .summary{grid-template-columns:1fr}
+  .search,.grid,.save-row{grid-template-columns:1fr}
+  .cards,.metrics{grid-template-columns:1fr 1fr}
+  .save{width:100%}
+  .identity{display:block}
+  .stage-pill{display:inline-block;margin-top:10px}
+}
+@media(max-width:470px){
+  .top{padding:0 12px}
+  .cards,.metrics,.package-buttons,.outcomes{grid-template-columns:1fr}
+  .badge{display:none}
+  .login-card{padding:22px}
+}
 </style>
 </head>
 <body>
 <main class="wrap">
-<div class="top"><div class="brand"><div class="logo">PB</div><div><strong>Lead Control Panel</strong><span>Private MailerLite shortcut</span></div></div><div class="badge">Admin only</div></div>
-<section class="panel">
-<header class="hero"><div class="eyebrow">Lightweight CRM</div><h1>Everything you need before and after the call.</h1><p>Load the lead, review their numbers and journey, record your notes, choose the package and update the outcome without opening MailerLite.</p></header>
-<div id="status" class="status" role="status" aria-live="polite"></div>
-<section class="search">
-<div><label for="email">Prospect email</label><input id="email" type="email" placeholder="prospect@example.com"></div>
-<div><label for="adminKey">Private admin key</label><input id="adminKey" type="password" placeholder="Enter admin key"></div>
-<button id="loadBtn" class="load">Load lead</button>
+<div class="top">
+  <div class="brand"><div class="logo">PB</div><div><strong>Lead Control Panel</strong><span>Sales workspace</span></div></div>
+  <div class="top-actions"><div id="adminBadge" class="badge hidden">Admin session active</div><button id="logoutBtn" class="ghost hidden">Log out</button></div>
+</div>
+
+<section id="loginView" class="login-shell">
+  <div class="login-card">
+    <div class="eyebrow">Secure access</div>
+    <h1>Sign in</h1>
+    <p>Enter your private admin key to open the dashboard. Your session remains active in this browser tab for up to eight hours.</p>
+    <label for="loginKey">Private admin key</label>
+    <input id="loginKey" type="password" autocomplete="current-password" placeholder="Enter private admin key">
+    <button id="loginBtn" class="primary">Log in</button>
+    <div id="loginStatus" class="status" style="margin:14px 0 0"></div>
+    <div class="login-note">The private key is sent only to your Cloudflare Worker and is never placed in the HTML.</div>
+  </div>
 </section>
-<div id="empty" class="empty">Enter the prospect’s email and your admin key to load their record.</div>
+
+<section id="appView" class="panel hidden">
+<header class="hero"><div class="eyebrow">Lead management</div><h1>Sales workspace</h1><p>Review today’s calls, manage follow-ups, open recent leads, or search directly by email.</p></header>
+<div id="status" class="status" role="status" aria-live="polite"></div>
+
+<section class="dashboard">
+  <div class="dashboard-head"><div><h2>Dashboard</h2><p id="dashboardDate">Loading…</p></div><button id="refreshBtn" class="refresh">Refresh dashboard</button></div>
+  <div class="summary">
+    <div class="summary-card"><span>Today’s calls</span><strong id="todayCount">0</strong></div>
+    <div class="summary-card"><span>Follow-ups due</span><strong id="followCount">0</strong></div>
+    <div class="summary-card"><span>Recent leads shown</span><strong id="recentCount">0</strong></div>
+  </div>
+  <div class="dashboard-grid">
+    <section class="list-panel"><div class="list-head"><h3>Today’s calls</h3><span>Click to open</span></div><div id="todayList" class="lead-list"></div></section>
+    <section class="list-panel"><div class="list-head"><h3>Follow-ups due</h3><span>Due today or overdue</span></div><div id="followList" class="lead-list"></div></section>
+    <section class="list-panel wide"><div class="list-head"><h3>Recent leads</h3><span>Newest MailerLite contacts</span></div><div id="recentList" class="lead-list"></div></section>
+  </div>
+</section>
+
+<section class="search">
+  <div><label for="email">Find a lead by email</label><input id="email" type="email" placeholder="prospect@example.com"></div>
+  <button id="loadBtn" class="primary">Load lead</button>
+</section>
+<div id="empty" class="empty">Choose a lead above or search by email to open their full record.</div>
 
 <section id="content" class="content">
 <div class="identity"><div><h2 id="businessName">Lead</h2><p id="identityLine"></p></div><div id="currentStage" class="stage-pill">No stage</div></div>
-
-<div class="section" style="border-top:0;padding-top:0;margin-top:0">
-<h3>Lead journey</h3><p class="section-copy">The current stage is highlighted. Completed stages are shown in green.</p>
-<div id="journey" class="journey"></div>
-</div>
-
-<div class="section">
-<h3>Call snapshot</h3>
-<div class="cards">
-<div class="card"><span>Strategy call</span><strong id="callTime">—</strong></div>
-<div class="card"><span>Yearly opportunity</span><strong id="opportunity">—</strong></div>
-<div class="card"><span>Recommended</span><strong id="recommended">—</strong></div>
-<div class="card"><span>Lead source</span><strong id="source">—</strong></div>
-</div>
-</div>
-
-<div class="section">
-<h3>Calculator answers</h3>
-<div class="cards metrics">
-<div class="card"><span>Average job value</span><strong id="jobValue">—</strong></div>
-<div class="card"><span>Extra jobs per week</span><strong id="extraJobs">—</strong></div>
-<div class="card"><span>Estimated yearly opportunity</span><strong id="yearlyValue">—</strong></div>
-</div>
-</div>
-
-<div class="section">
-<h3>Choose the package</h3><p class="section-copy">Tap a package to select it. It will be saved with the next update.</p>
-<div class="package-buttons">
-<button class="package-btn" data-package="Professional Website">Professional Website</button>
-<button class="package-btn" data-package="Email Recovery System">Email Recovery System</button>
-<button class="package-btn" data-package="Client Capture System Lite">Client Capture System Lite</button>
-<button class="package-btn" data-package="Client Capture System Enterprise">Client Capture System Enterprise</button>
-</div>
-<input id="package" type="hidden">
-</div>
-
-<div class="section">
-<h3>Call notes and follow-up</h3>
-<div class="grid">
-<div><label for="notes">Notes</label><textarea id="notes" placeholder="What did they say? What matters? What happens next?"></textarea></div>
-<div>
-<label for="outcome">Call outcome</label>
-<select id="outcome"><option value="">Not set</option><option>Call Completed</option><option>Thinking</option><option>Payment Link Sent</option><option>Won</option><option>Follow Up Later</option><option>Not Proceeding</option></select>
-<div style="height:14px"></div>
-<label for="followUpDate">Follow-up date</label><input id="followUpDate" type="text" placeholder="Select a follow-up date" autocomplete="off">
-<div style="height:14px"></div>
-<label for="stage">Lead stage</label>
-<select id="stage"><option>Concept Lead</option><option>Calculator Started</option><option>Calculator Completed</option><option>Strategy Call Booked</option><option>Questionnaire Completed</option><option>Call Completed</option><option>Payment Link Sent</option><option>Follow Up Later</option><option>Not Proceeding</option><option>Client</option></select>
-</div>
-</div>
-</div>
-
-<div class="section">
-<h3>Quick outcomes</h3><p class="section-copy">These buttons set the matching stage and save immediately.</p>
-<div class="outcomes">
-<button class="outcome" data-quick="Call Completed|Call Completed">Call completed</button>
-<button class="outcome thinking" data-quick="Follow Up Later|Thinking">Thinking</button>
-<button class="outcome follow" data-quick="Payment Link Sent|Payment Link Sent">Payment link sent</button>
-<button class="outcome client" data-quick="Client|Won">Client</button>
-<button class="outcome lost" data-quick="Not Proceeding|Not Proceeding">Not proceeding</button>
-</div>
-</div>
-
-<div class="save-row">
-<div></div><button id="saveBtn" class="save">Save all changes</button>
-</div>
+<div class="section" style="border-top:0;padding-top:0;margin-top:0"><h3>Lead journey</h3><p class="section-copy">The current stage is highlighted. Completed stages are shown in green.</p><div id="journey" class="journey"></div></div>
+<div class="section"><h3>Call snapshot</h3><div class="cards"><div class="card"><span>Strategy call</span><strong id="callTime">—</strong></div><div class="card"><span>Yearly opportunity</span><strong id="opportunity">—</strong></div><div class="card"><span>Recommended</span><strong id="recommended">—</strong></div><div class="card"><span>Lead source</span><strong id="source">—</strong></div></div></div>
+<div class="section"><h3>Calculator answers</h3><div class="cards metrics"><div class="card"><span>Average job value</span><strong id="jobValue">—</strong></div><div class="card"><span>Extra jobs per week</span><strong id="extraJobs">—</strong></div><div class="card"><span>Estimated yearly opportunity</span><strong id="yearlyValue">—</strong></div></div></div>
+<div class="section"><h3>Choose the package</h3><p class="section-copy">Tap a package to select it. It will be saved with the next update.</p><div class="package-buttons"><button class="package-btn" data-package="Professional Website">Professional Website</button><button class="package-btn" data-package="Email Recovery System">Email Recovery System</button><button class="package-btn" data-package="Client Capture System Lite">Client Capture System Lite</button><button class="package-btn" data-package="Client Capture System Enterprise">Client Capture System Enterprise</button></div><input id="package" type="hidden"></div>
+<div class="section"><h3>Call notes and follow-up</h3><div class="grid"><div><label for="notes">Notes</label><textarea id="notes" placeholder="What did they say? What matters? What happens next?"></textarea></div><div><label for="outcome">Call outcome</label><select id="outcome"><option value="">Not set</option><option>Call Completed</option><option>Thinking</option><option>Payment Link Sent</option><option>Won</option><option>Follow Up Later</option><option>Not Proceeding</option></select><div style="height:14px"></div><label for="followUpDate">Follow-up date</label><input id="followUpDate" type="text" placeholder="Select a follow-up date" autocomplete="off"><div style="height:14px"></div><label for="stage">Lead stage</label><select id="stage"><option>Concept Lead</option><option>Calculator Started</option><option>Calculator Completed</option><option>Strategy Call Booked</option><option>Questionnaire Completed</option><option>Call Completed</option><option>Payment Link Sent</option><option>Follow Up Later</option><option>Not Proceeding</option><option>Client</option></select></div></div></div>
+<div class="section"><h3>Quick outcomes</h3><p class="section-copy">These buttons set the matching stage and save immediately.</p><div class="outcomes"><button class="outcome" data-quick="Call Completed|Call Completed">Call completed</button><button class="outcome thinking" data-quick="Follow Up Later|Thinking">Thinking</button><button class="outcome follow" data-quick="Payment Link Sent|Payment Link Sent">Payment link sent</button><button class="outcome client" data-quick="Client|Won">Client</button><button class="outcome lost" data-quick="Not Proceeding|Not Proceeding">Not proceeding</button></div></div>
+<div class="save-row"><div></div><button id="saveBtn" class="primary save">Save all changes</button></div>
 </section>
 </section>
-<div class="foot">No MailerLite API credentials are stored in this page.</div>
+<div class="foot">Lead data remains protected behind your Cloudflare Worker.</div>
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
-const WORKER="https://trade-concept-leads.pbwebonlinesales.workers.dev";
+const WORKER='https://trade-concept-leads.pbwebonlinesales.workers.dev';
+const SESSION_KEY="pb_lead_control_session_v4";
 const STAGES=["Concept Lead","Calculator Started","Calculator Completed","Strategy Call Booked","Questionnaire Completed","Call Completed","Payment Link Sent","Follow Up Later","Not Proceeding","Client"];
 const $=id=>document.getElementById(id);
-const email=$("email"),adminKey=$("adminKey"),status=$("status"),content=$("content"),empty=$("empty"),stage=$("stage"),pkg=$("package"),outcome=$("outcome"),notes=$("notes"),followUpDate=$("followUpDate");
-const followUpPicker=flatpickr(followUpDate,{
-  dateFormat:"Y-m-d",
-  altInput:true,
-  altFormat:"d/m/Y",
-  allowInput:false,
-  disableMobile:true
-});
+const loginView=$("loginView"),appView=$("appView"),loginKey=$("loginKey"),loginStatus=$("loginStatus"),logoutBtn=$("logoutBtn"),adminBadge=$("adminBadge"),status=$("status"),email=$("email"),content=$("content"),empty=$("empty"),stage=$("stage"),pkg=$("package"),outcome=$("outcome"),notes=$("notes"),followUpDate=$("followUpDate");
+let sessionToken=sessionStorage.getItem(SESSION_KEY)||"";
+const followUpPicker=flatpickr(followUpDate,{dateFormat:"Y-m-d",altInput:true,altFormat:"d/m/Y",allowInput:false,disableMobile:true});
 const urlEmail=new URLSearchParams(location.search).get("email");if(urlEmail)email.value=urlEmail;
 
-function message(text,type){status.textContent=text;status.className="status show "+type}
+function setStatus(el,text,type){el.textContent=text;el.className="status show "+type}
+function clearStatus(el){el.textContent="";el.className="status"}
 function busy(on){document.querySelectorAll("button").forEach(b=>b.disabled=on)}
 function money(v){const n=Number(v);return v&&Number.isFinite(n)?new Intl.NumberFormat("en-GB",{style:"currency",currency:"GBP",maximumFractionDigits:0}).format(n):"—"}
-async function request(path,payload){const res=await fetch(WORKER+path,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});let data={};try{data=await res.json()}catch{}if(!res.ok||!data.success)throw new Error(data.error||`Worker returned ${res.status}`);return data}
+function displayDate(v){if(!v)return"—";const d=new Date(v+"T12:00:00");return Number.isNaN(d.getTime())?v:new Intl.DateTimeFormat("en-GB",{day:"numeric",month:"short",year:"numeric"}).format(d)}
+async function request(path,payload={}){const res=await fetch(WORKER+path,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({...payload,session_token:sessionToken})});let data={};try{data=await res.json()}catch{}if(res.status===401&&path!=="/admin-login"){logout(false);throw new Error("Your session has expired. Please log in again.")}if(!res.ok||!data.success)throw new Error(data.error||`Worker returned ${res.status}`);return data}
+function showApp(){loginView.classList.add("hidden");appView.classList.remove("hidden");logoutBtn.classList.remove("hidden");adminBadge.classList.remove("hidden")}
+function showLogin(){loginView.classList.remove("hidden");appView.classList.add("hidden");logoutBtn.classList.add("hidden");adminBadge.classList.add("hidden")}
+function logout(showMessage=true){sessionToken="";sessionStorage.removeItem(SESSION_KEY);showLogin();content.classList.remove("show");if(showMessage)setStatus(loginStatus,"You have been logged out.","ok")}
+async function login(){if(!loginKey.value.trim()){setStatus(loginStatus,"Enter your private admin key.","bad");return}busy(true);setStatus(loginStatus,"Checking your key…","ok");try{const data=await request("/admin-login",{admin_key:loginKey.value.trim(),session_token:""});sessionToken=data.session_token;sessionStorage.setItem(SESSION_KEY,sessionToken);loginKey.value="";clearStatus(loginStatus);showApp();await loadDashboard();if(urlEmail)await loadLead()}catch(err){setStatus(loginStatus,err.message,"bad")}finally{busy(false)}}
+function renderList(id,items,kind){const box=$(id);if(!items.length){box.innerHTML=`<div class="empty-list">Nothing to show here.</div>`;return}box.innerHTML=items.map(lead=>{const name=lead.business_name||lead.name||lead.email;const sub=[lead.trade,lead.lead_stage].filter(Boolean).join(" · ");const meta=kind==="follow"?displayDate(lead.follow_up_date):kind==="call"?(lead.strategy_call_time||""):(lead.call_outcome||lead.selected_package||"");return `<button class="lead-row" data-email="${encodeURIComponent(lead.email)}"><span class="lead-main"><strong>${escapeHtml(name)}</strong><span>${escapeHtml(sub||lead.email)}</span></span><span class="lead-meta">${escapeHtml(meta)}</span></button>`}).join("");box.querySelectorAll("[data-email]").forEach(btn=>btn.addEventListener("click",()=>{email.value=decodeURIComponent(btn.dataset.email);loadLead();document.querySelector(".search").scrollIntoView({behavior:"smooth",block:"start"})}))}
+function escapeHtml(v){return String(v||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+async function loadDashboard(){setStatus(status,"Loading dashboard…","ok");try{const data=await request("/admin-dashboard");$("dashboardDate").textContent=new Intl.DateTimeFormat("en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"}).format(new Date(data.today+"T12:00:00"));$("todayCount").textContent=data.counts.todays_calls;$("followCount").textContent=data.counts.follow_ups_due;$("recentCount").textContent=data.counts.recent_leads;renderList("todayList",data.todays_calls,"call");renderList("followList",data.follow_ups_due,"follow");renderList("recentList",data.recent_leads,"recent");clearStatus(status)}catch(err){setStatus(status,err.message,"bad")}}
 function renderJourney(current){const i=STAGES.indexOf(current);$("journey").innerHTML=STAGES.slice(0,8).map((s,x)=>`<div class="step ${x<i?"done":x===i?"current":""}">${s}</div>`).join("")}
 function selectPackage(value){pkg.value=value;document.querySelectorAll("[data-package]").forEach(b=>b.classList.toggle("active",b.dataset.package===value))}
-function payload(chosenStage=stage.value){return{email:email.value.trim(),admin_key:adminKey.value.trim(),lead_stage:chosenStage,selected_package:pkg.value,call_outcome:outcome.value,sales_notes:notes.value.trim(),follow_up_date:followUpDate.value}}
-
-async function loadLead(){
-if(!email.checkValidity()){email.reportValidity();return}if(!adminKey.value.trim()){message("Enter your private admin key.","bad");return}
-busy(true);message("Loading lead…","ok");
-try{const {lead}=await request("/get-lead",{email:email.value.trim(),admin_key:adminKey.value.trim()});
-$("businessName").textContent=lead.business_name||lead.name||lead.email;$("identityLine").textContent=[lead.name,lead.trade,lead.email].filter(Boolean).join(" · ");$("currentStage").textContent=lead.lead_stage||"No stage";$("callTime").textContent=lead.strategy_call_time||"—";$("opportunity").textContent=money(lead.estimated_yearly_opportunity);$("recommended").textContent=lead.recommended_package||"—";$("source").textContent=lead.lead_source||"—";$("jobValue").textContent=money(lead.average_job_value);$("extraJobs").textContent=lead.extra_jobs_per_week||"—";$("yearlyValue").textContent=money(lead.estimated_yearly_opportunity);
-if(lead.lead_stage)stage.value=lead.lead_stage;selectPackage(lead.selected_package||"");outcome.value=lead.call_outcome||"";notes.value=lead.sales_notes||"";followUpPicker.setDate(lead.follow_up_date||"",false,"Y-m-d");renderJourney(lead.lead_stage||"");
-content.classList.add("show");empty.style.display="none";message("Lead loaded successfully.","ok")
-}catch(err){content.classList.remove("show");empty.style.display="block";message(err.message,"bad")}finally{busy(false)}
-}
-async function saveLead(chosenStage=stage.value,chosenOutcome=outcome.value){
-stage.value=chosenStage;outcome.value=chosenOutcome;busy(true);message(`Saving “${chosenStage}”…`,"ok");
-try{await request("/update-lead-stage",payload(chosenStage));$("currentStage").textContent=chosenStage;renderJourney(chosenStage);message(`Saved — lead is now “${chosenStage}”.`,"ok")}catch(err){message(err.message,"bad")}finally{busy(false)}
-}
-$("loadBtn").addEventListener("click",loadLead);$("saveBtn").addEventListener("click",()=>saveLead());
-document.querySelectorAll("[data-package]").forEach(b=>b.addEventListener("click",()=>selectPackage(b.dataset.package)));
-document.querySelectorAll("[data-quick]").forEach(b=>b.addEventListener("click",()=>{const [s,o]=b.dataset.quick.split("|");saveLead(s,o)}));
-[email,adminKey].forEach(el=>el.addEventListener("keydown",e=>{if(e.key==="Enter")loadLead()}));
+function payload(chosenStage=stage.value){return{email:email.value.trim(),lead_stage:chosenStage,selected_package:pkg.value,call_outcome:outcome.value,sales_notes:notes.value.trim(),follow_up_date:followUpDate.value}}
+async function loadLead(){if(!email.checkValidity()||!email.value.trim()){email.reportValidity();return}busy(true);setStatus(status,"Loading lead…","ok");try{const {lead}=await request("/get-lead",{email:email.value.trim()});$("businessName").textContent=lead.business_name||lead.name||lead.email;$("identityLine").textContent=[lead.name,lead.trade,lead.email].filter(Boolean).join(" · ");$("currentStage").textContent=lead.lead_stage||"No stage";$("callTime").textContent=lead.strategy_call_time||"—";$("opportunity").textContent=money(lead.estimated_yearly_opportunity);$("recommended").textContent=lead.recommended_package||"—";$("source").textContent=lead.lead_source||"—";$("jobValue").textContent=money(lead.average_job_value);$("extraJobs").textContent=lead.extra_jobs_per_week||"—";$("yearlyValue").textContent=money(lead.estimated_yearly_opportunity);if(lead.lead_stage)stage.value=lead.lead_stage;selectPackage(lead.selected_package||"");outcome.value=lead.call_outcome||"";notes.value=lead.sales_notes||"";followUpPicker.setDate(lead.follow_up_date||"",false,"Y-m-d");renderJourney(lead.lead_stage||"");content.classList.add("show");empty.style.display="none";setStatus(status,"Lead loaded successfully.","ok")}catch(err){content.classList.remove("show");empty.style.display="block";setStatus(status,err.message,"bad")}finally{busy(false)}}
+async function saveLead(chosenStage=stage.value,chosenOutcome=outcome.value){stage.value=chosenStage;outcome.value=chosenOutcome;busy(true);setStatus(status,`Saving “${chosenStage}”…`,"ok");try{await request("/update-lead-stage",payload(chosenStage));$("currentStage").textContent=chosenStage;renderJourney(chosenStage);setStatus(status,`Saved — lead is now “${chosenStage}”.`,"ok");await loadDashboard()}catch(err){setStatus(status,err.message,"bad")}finally{busy(false)}}
+$("loginBtn").addEventListener("click",login);loginKey.addEventListener("keydown",e=>{if(e.key==="Enter")login()});logoutBtn.addEventListener("click",()=>logout());$("refreshBtn").addEventListener("click",loadDashboard);$("loadBtn").addEventListener("click",loadLead);email.addEventListener("keydown",e=>{if(e.key==="Enter")loadLead()});$("saveBtn").addEventListener("click",()=>saveLead());document.querySelectorAll("[data-package]").forEach(b=>b.addEventListener("click",()=>selectPackage(b.dataset.package)));document.querySelectorAll("[data-quick]").forEach(b=>b.addEventListener("click",()=>{const [s,o]=b.dataset.quick.split("|");saveLead(s,o)}));
+if(sessionToken){showApp();loadDashboard().then(()=>{if(urlEmail)loadLead()}).catch(()=>logout(false))}else{showLogin()}
 </script>
 </body>
 </html>
